@@ -18,11 +18,10 @@ markup:
 
 
 enableRobotsTXT: true
-buildDrafts: true
+buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: G-3EMDQYRZC3
 
 outputs:
     home:
@@ -42,7 +41,7 @@ params:
   paginate: 100
   author: Lukmanov R.A.
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["/Profile.jpg"]
   DateFormat: "January 2, 2006"
   defaultTheme: dark  # dark,light  
   disableThemeToggle: True
@@ -82,7 +81,7 @@ params:
     safari_pinned_tab: "/circle4.webp"
 
   label:
-    text: " "
+    text: "Rustam A. Lukmanov"
     icon: /logo_italic7.png
     iconHeight: 35
 
@@ -120,85 +119,12 @@ Feel free to contact me by email: mail at rustam-lukmanov dot ru.
       - name: Contact Information
         url: contact
   # home-info mode <img src='/images/circle_en_sh2.png' alt='Girl in a jacket' width='400' align='middle'>
-  homeInfoParams:
-    Title: ""
-    Content: "
-    
-    <img src='/images/logo_BAR_short_sq.png' alt='Girl in a jacket' width='300' align='left'  style='filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.45)); opacity:0.65;'></a>
-    <p>  
-    <br/>
-</p>
-
-    Hi, I’m a scientist/engineer who loves working with data. I create tools/visualizations that help to understand complex signals better.
-    <br/>   
-     <br/>
-
-    Русская версия сайта находится [**здесь**](/ru/)
-    
-    <br/>  
-    <p>   
-
-
-    </p>  
-
-  
-  
-      
-        
-          
-      
-        
-   <p>
-   <br/>
-   </p>   
-               
-
-      For publications, see [**Google Scholar**](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao) or my [**LOOP**](https://loop.frontiersin.org/people/1234341/overview) profile. For code, see [**GitHub**](https://github.com/Lukmanovr).
-
-      Feel free to contact me through links attached below.
-
-      
-      > - [**Curriculum Vitae**](/cv/)  
-        
-      > - [**Publications**](/publications/)  
-
-          
-       
-      
-      You can also follow me on social media:
-        
-      > - [**Instagram**](https://www.instagram.com/lukmanovr/) / [**LinkedIn**](https://www.linkedin.com/in/rustam-lukmanov-604695100/) / [**Telegram**](https://t.me/lukmanovr)
-        
-
-      Sometimes, I write here about things I find interesting, check it out below or use the archive to navigate:  
-      
-      > - [**Posts**](/posts/)
-      
-      > - [**Archive**](/archives/) 
-       
-      
-  
-
-
-<a href= /contact/><img src='/images/contact_BAR.png' alt='Girl in a jacket' width='200' align='left' style='filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.45)); opacity:0.65;'></a>
-"
-  #socialIcons:
-  #  - name: twitter
-  #    url: "https://twitter.com/"
-  #  - name: stackoverflow
-  #    url: "https://stackoverflow.com"
-  #  - name: github
-  #    url: "https://github.com/"
-  #  - name: google scholar
-  #    url: "https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao/"
 
   analytics:
     google:
       SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
-    yandex:
-      SiteVerificationTag: "XYZabc"
+  homeInfoParams:
+    Title: ""
 
   cover:
     hidden: false # hide everywhere but not in structured data
@@ -224,7 +150,7 @@ menu:
   main:
     - identifier: Home
       name: Home 
-      url: //
+      url: /
       weight: 10
     - identifier: Posts
       name: Posts 
