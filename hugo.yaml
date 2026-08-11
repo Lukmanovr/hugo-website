@@ -39,7 +39,7 @@ minify:
 params:
   env: production # enables opengraph, twitter-cards and schema
   title: Rustam Lukmanov
-  description: "Rustam Lukmanov — research scientist working on unsupervised analysis of graph data. Ph.D. in experimental physics, University of Bern."
+  description: "Rustam Lukmanov — Associate Professor and Deputy Director of the AI Institute at Innopolis University. Machine learning for graph-structured data; Ph.D. in physics, University of Bern."
   keywords: [Blog, Portfolio, Rustam Lukmanov]
   author: Lukmanov R.A.
   images: ["/Profile.webp"]
@@ -76,9 +76,11 @@ params:
   homeInfoParams:
     Title: "Rustam Lukmanov"
     Content: |
-      Research scientist. I develop scalable, principled methods for the unsupervised analysis of graph-structured data.
+      I work on artificial intelligence — teaching machines to make sense of complex, interconnected data on their own.
 
-      Ph.D. in experimental physics from the University of Bern, advised by Prof. Peter Wurz. Previously at Saint Petersburg State University (M.Sc., B.Sc., advised by Alexey Goncharov).
+      I am an Associate Professor and Deputy Director of the AI Institute at Innopolis University. My research develops scalable, principled machine-learning methods for the unsupervised analysis of graph-structured data — finding patterns in the kind of data where things are defined by their connections.
+
+      Before that: a Ph.D. in experimental physics from the University of Bern, advised by Prof. Peter Wurz, and an M.Sc. and B.Sc. from Saint Petersburg State University.
 
       [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao) · [GitHub](https://github.com/Lukmanovr) · [LinkedIn](https://www.linkedin.com/in/rustam-lukmanov-604695100/) · [mail@rustam-lukmanov.ru](mailto:mail@rustam-lukmanov.ru)
 

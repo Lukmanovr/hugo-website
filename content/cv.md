@@ -22,9 +22,13 @@ cover:
 
 #### About
 
-Analytical scientist with a background spanning laser-based mass spectrometry, geophysics, and machine learning. My work combines experimental instrumentation with computational methods — in particular, graph-based and topological approaches to the unsupervised analysis of large spectroscopic datasets.
+Associate Professor and Deputy Director of the AI Institute at Innopolis University. I lead research at the intersection of machine learning and the physical sciences: scalable, principled methods — graph-based and topological — for the unsupervised analysis of large, complex datasets.
 
-Born 8 September 1992. In Russian, my name reads as Рустам Лукманов.
+My path runs from field geophysics through laser-based mass spectrometry for space exploration to AI research and institute leadership — an unusual breadth that shapes how I approach problems: instruments first, then the mathematics to make sense of what they measure.
+
+**At a glance:** Deputy Director, AI Institute (Innopolis University) · Ph.D. in Physics (University of Bern) · 20+ peer-reviewed [publications](/publications/) spanning astrobiology, mass spectrometry, and machine learning.
+
+In Russian, my name reads as Рустам Лукманов.
 
 #### Contact
 
@@ -32,8 +36,9 @@ Born 8 September 1992. In Russian, my name reads as Рустам Лукмано�
 
 ---
 
-#### Employment history
-- 2023–now, **Assistant Professor**, AI Institute, Innopolis University, Innopolis, Russia
+#### Appointments
+- 2023–now, **Associate Professor & Deputy Director**, AI Institute, Innopolis University, Innopolis, Russia.
+  Research on graph machine learning and unsupervised methods; as Deputy Director, responsible for the institute's research agenda and its day-to-day scientific operations.
 - 2021–2022, **Postdoctoral Researcher**, Space Research and Planetary Sciences, Physics Institute, University of Bern, Switzerland. Development of spectral classification tools/models for unsupervised characterization of compounds measured with space-type and high-resolution laboratory-based fs-LIMS ([review article about LIMS technology](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/abs/10.1002/mas.21669)) instruments.
 
 - 2017–2021, **Teaching Associate**, Physics Institute, University of Bern, Switzerland.
