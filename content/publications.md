@@ -2,35 +2,33 @@
 title: "Publications"
 url: "/publications/"
 summary: publications
-draft: false
-weight: 1
-tags: ["Papers","Conferences", "Grants", "Publications"]
-author: "Rustam A. Lukmanov"
-# author: ["Me", "You"] # multiple authors
-showToc: false
-TocOpen: false
 hidemeta: true
-comments: false
-description: "List of peer-reviewed publications and conference contributions"
-disableHLJS: false # to disable highlightjs
-disableShare: false
-hideSummary: false
-searchHidden: false
-ShowReadingTime: true
-ShowPostNavLinks: true
-cover:
-    image: images/circle.png # image path/url
-    alt: "<alt text>" # alt text
-    caption: "<text>" # display caption under cover
-    relative: true # when using page bundles set this to true
-    hidden: true # only hide on current single page
-
+showToc: false
+description: "Peer-reviewed publications and conference contributions."
 ---
+
+Full record: [ORCID](https://orcid.org/0000-0001-9257-7410) · [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao)
+
+## Selected publications
+
+- **Multiwavelength ablation/ionization of the 1.88 Ga Gunflint chert** — Astrobiology, 2022. Far-UV femtosecond ablation on a space-prototype instrument: tenfold gains in mass resolution and ion yield. [Paper](https://doi.org/10.1089/ast.2019.2201)
+- **High mass resolution fs-LIMS imaging and manifold learning** — Frontiers in Space Technologies, 2022. Unsupervised analysis of 40,000 mass spectra from the two-billion-year-old Gunflint chert. [Paper](https://www.frontiersin.org/articles/10.3389/frspt.2022.718943/full)
+- **Towards empirical biosignatures using LIMS** — Journal of Chemometrics, 2021. Weighted mass-correlation networks separate Precambrian kerogen from its host mineral at 99% accuracy. [Paper](https://doi.org/10.1002/cem.3370)
+- **On topological analysis of fs-LIMS data** — Frontiers in Artificial Intelligence, 2021. Topological methods for in-situ planetary mass spectrometry. [Paper](https://www.frontiersin.org/articles/10.3389/frai.2021.668163/full)
+- **ORIGIN: a compact laser desorption mass spectrometry system** — Scientific Reports, 2020. Femtomole-level amino-acid detection with an instrument built for missions such as the Europa Lander. [Paper](https://www.nature.com/articles/s41598-020-66240-1)
+
+## All publications
 
 ![Cover of the Journal of Analytical Atomic Spectrometry featuring our work](/images/Jaas_cover_lossless.webp)
   
 
-1.  Schwander, L., Ligterink, N.F.W., Kipfer, K.A., **Lukmanov, R.A.**, Grimaudo, V., Tulej, M., De Koning, C.P., Keresztes Schmidt, P., Gruchola, S.N., Boeren, N.J. and Ehrenfreund, P., Correlation network analysis for amino acid identification in soil samples with the ORIGIN space-prototype instrument. Frontiers in Astronomy and Space Sciences, p.106. (2022), <a href="https://www.frontiersin.org/articles/10.3389/fspas.2022.909193/full" target="_blank">**Paper**</a>
+1.  Nigmatullin, A.R., **Lukmanov, R.A.** and Taha, A., 2026. ViT quantization: CPU-centric analysis of the trade-off between size and speed. Automatic Documentation and Mathematical Linguistics. <a href="https://doi.org/10.3103/S0005105526700196" target="_blank">**Paper**</a>
+
+2.  Ahmadi-Asl, S., Garaev, R.V., **Lukmanov, R.A.**, Rezaeian, N., Khattak, A.M. and Mazzara, M., 2025. Efficient smooth tensor train and tensor ring completion for image classification enhancement. IEEE Access. <a href="https://doi.org/10.1109/ACCESS.2025.3625862" target="_blank">**Paper**</a>
+
+3.  Taha, A. and **Lukmanov, R.A.**, 2025. Where do the best features lie? A layer-wise analysis of frozen encoders for efficient endoscopic image classification. Automatic Documentation and Mathematical Linguistics. <a href="https://doi.org/10.3103/S0005105525701419" target="_blank">**Paper**</a>
+
+4.  Schwander, L., Ligterink, N.F.W., Kipfer, K.A., **Lukmanov, R.A.**, Grimaudo, V., Tulej, M., De Koning, C.P., Keresztes Schmidt, P., Gruchola, S.N., Boeren, N.J. and Ehrenfreund, P., Correlation network analysis for amino acid identification in soil samples with the ORIGIN space-prototype instrument. Frontiers in Astronomy and Space Sciences, p.106. (2022), <a href="https://www.frontiersin.org/articles/10.3389/fspas.2022.909193/full" target="_blank">**Paper**</a>
 
 2.  Gruchola, S., de Koning, C.P., Wiesendanger, R., Schmidt, P.K., Riedo, A., Grimaudo, V., **Lukmanov, R.A.**, Ligterink, N.F., Tulej, M. and Wurz, P., 2022. Improved limit of detection of a high-resolution fs-LIMS instrument through mass-selective beam blanking. International Journal of Mass Spectrometry, 474, p.116803. <a href="https://www.sciencedirect.com/science/article/pii/S1387380622000082?via%3Dihub" target="_blank">**Paper**</a>
 

@@ -23,7 +23,7 @@ In Russian, my name reads as Рустам Лукманов.
 
 #### Contact
 
-[mail@rustam-lukmanov.ru](mailto:mail@rustam-lukmanov.ru) · [contact form](/contact/)
+[mail@rustam-lukmanov.ru](mailto:mail@rustam-lukmanov.ru) · [ORCID](https://orcid.org/0000-0001-9257-7410) · [contact form](/contact/)
 
 ---
 
