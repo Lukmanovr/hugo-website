@@ -1,5 +1,5 @@
 // Homepage art panel: a drifting vector flow field on vanilla canvas.
-// Straight needle strokes oriented by a slowly evolving noise field, with a
+// Straight arrow strokes oriented by a slowly evolving noise field, with a
 // gentle swirl around the cursor. Loaded lazily by
 // home_info.html after idle; reduced-motion visitors keep the static CSS
 // gradient. Palettes follow the site theme (html[data-theme]).
@@ -120,9 +120,16 @@
         }
         var dx = Math.cos(angle) * half;
         var dy = Math.sin(angle) * half;
+        var tipX = x + dx, tipY = y + dy;
+        var wing = 2.2 + depth * 1.2;
         ctx.beginPath();
         ctx.moveTo(x - dx, y - dy);
-        ctx.lineTo(x + dx, y + dy);
+        ctx.lineTo(tipX, tipY);
+        // chevron head marks the field direction
+        ctx.moveTo(tipX, tipY);
+        ctx.lineTo(tipX - Math.cos(angle - 0.5) * wing, tipY - Math.sin(angle - 0.5) * wing);
+        ctx.moveTo(tipX, tipY);
+        ctx.lineTo(tipX - Math.cos(angle + 0.5) * wing, tipY - Math.sin(angle + 0.5) * wing);
         ctx.stroke();
       }
     }
