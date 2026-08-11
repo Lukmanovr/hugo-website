@@ -230,11 +230,8 @@ h1[id], h2[id], h3[id], h4[id] {
     border: 1px solid var(--border);
     border-radius: var(--r-md);
     overflow: hidden;
-    /* static fill until (or instead of) the animation mounts;
-       follows the theme like the canvas palette does */
-    background:
-        radial-gradient(70% 90% at 50% 55%, oklch(from var(--accent) l c h / 0.18), transparent 75%),
-        var(--entry);
+    /* flat static fill until (or instead of) the animation mounts */
+    background: var(--entry);
 }
 
 .art-panel canvas {

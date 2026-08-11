@@ -53,20 +53,14 @@
     dark: {
       bg: '#16140f',
       trail: 'rgba(22, 20, 15, 0.16)',
-      deep: [150, 45, 32],
+      deep: [163, 52, 35],
       base: [209, 73, 47],
-      bright: [238, 112, 72],
-      spark: 'rgba(242, 186, 148, 0.9)',
-      vignette: 'rgba(10, 9, 6, 0.55)',
     },
     light: {
       bg: '#f2f0eb',
       trail: 'rgba(242, 240, 235, 0.16)',
-      deep: [128, 38, 24],
+      deep: [140, 42, 26],
       base: [176, 52, 30],
-      bright: [214, 96, 60],
-      spark: 'rgba(94, 28, 16, 0.9)',
-      vignette: 'rgba(70, 62, 48, 0.14)',
     },
   };
 
@@ -113,17 +107,12 @@
         var y = gy + (jy - 0.5) * GRID * 0.8;
 
         var depth = noise(x / SCALE + 40, y / SCALE + 40);
-        var seg = (4 + depth * 9) * 2 / STEPS;
+        var seg = (5 + depth * 5) * 2 / STEPS;
 
-        // rare bright sparks give the field focal points
-        var isSpark = jx > 0.985;
-        var col = mix(pal.deep, depth < 0.55 ? pal.base : pal.bright,
-          Math.min(1, depth * 1.4));
-        var alpha = 0.22 + depth * 0.6;
-        ctx.strokeStyle = isSpark
-          ? pal.spark
-          : 'rgba(' + col[0] + ', ' + col[1] + ', ' + col[2] + ', ' + alpha.toFixed(3) + ')';
-        ctx.lineWidth = 0.9 + depth * 0.9;
+        var col = mix(pal.deep, pal.base, depth);
+        var alpha = 0.4 + depth * 0.35;
+        ctx.strokeStyle = 'rgba(' + col[0] + ', ' + col[1] + ', ' + col[2] + ', ' + alpha.toFixed(3) + ')';
+        ctx.lineWidth = 1 + depth * 0.4;
 
         // walk a short streamline along the field: curved, not a straight tick
         ctx.beginPath();
@@ -145,16 +134,6 @@
         ctx.stroke();
       }
     }
-
-    // soft vignette settles the composition inside the card
-    var vg = ctx.createRadialGradient(
-      W / 2, H / 2, Math.min(W, H) * 0.45,
-      W / 2, H / 2, Math.max(W, H) * 0.72
-    );
-    vg.addColorStop(0, 'rgba(0,0,0,0)');
-    vg.addColorStop(1, pal.vignette);
-    ctx.fillStyle = vg;
-    ctx.fillRect(0, 0, W, H);
   }
 
   var running = false;
