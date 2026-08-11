@@ -1,6 +1,9 @@
 /* ==========================================================================
    Site customizations on top of PaperMod (loaded after core theme CSS).
-   Replaces the old wholesale-copied theme stylesheets; only deltas live here.
+   Aesthetic direction: editorial-minimal, modeled on the Cursor blog —
+   monochrome restraint, generous whitespace, hairline dividers, row-based
+   post list, stacked meta over tight-tracked titles. The red accent is used
+   sparingly (links, progress bar, focus rings) rather than as decoration.
    ========================================================================== */
 
 /* ---- Design tokens ------------------------------------------------------ */
@@ -8,25 +11,35 @@
 :root {
     /* brand accent: the Vanta trunk red, defined once in oklch */
     --accent: oklch(55% 0.21 30);
-    --accent-subtle: oklch(55% 0.21 30 / 0.14);
+    --accent-subtle: oklch(55% 0.21 30 / 0.12);
 
     /* fluid type & space scales */
-    --step-0: clamp(0.9rem, 0.84rem + 0.3vw, 1.05rem);
+    --step-0: clamp(0.95rem, 0.89rem + 0.25vw, 1.06rem);
     --space-s: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
-    --space-m: clamp(1.25rem, 1rem + 1vw, 2rem);
+    --space-m: clamp(1.5rem, 1.2rem + 1.2vw, 2.5rem);
 
-    /* layout tweaks carried over from the old fork */
-    --gap: 21px;
-    --main-width: 820px;
+    --gap: 24px;
+    --main-width: 760px;
 }
 
 body {
     font-size: var(--step-0);
+    letter-spacing: 0.005em;
 }
 
-/* previous fork tightened the dark entry surface to near-black */
+/* near-black editorial dark surface */
 [data-theme="dark"] {
-    --entry: rgb(29, 30, 32);
+    --theme: rgb(17, 17, 19);
+    --entry: rgb(24, 24, 27);
+    --border: rgb(39, 39, 42);
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme="auto"] {
+        --theme: rgb(17, 17, 19);
+        --entry: rgb(24, 24, 27);
+        --border: rgb(39, 39, 42);
+    }
 }
 
 /* ---- Header logo: light/dark variants ------------------------------------ */
@@ -61,157 +74,250 @@ h1[id], h2[id], h3[id], h4[id] {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: color-mix(in oklab, var(--theme) 78%, transparent);
-    -webkit-backdrop-filter: blur(10px) saturate(1.4);
-    backdrop-filter: blur(10px) saturate(1.4);
-    box-shadow: 0 3px 6px 0 hsl(0deg 0% 0% / 0.2);
+    background: color-mix(in oklab, var(--theme) 82%, transparent);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+    backdrop-filter: blur(12px) saturate(1.3);
+    border-bottom: 1px solid var(--border);
 }
 
-@supports not (backdrop-filter: blur(10px)) {
+@supports not (backdrop-filter: blur(12px)) {
     .header {
         background: var(--theme);
     }
 }
 
-/* accent underline on nav hover (from the old fork, tokenized) */
-#menu a:hover {
-    box-shadow: inset 0 -0.2rem 0 0 var(--accent);
-    transition: box-shadow 0.1s ease-in;
+#menu a:hover span {
+    color: var(--primary);
+}
+
+#menu span {
+    transition: color 0.15s ease;
+    color: var(--secondary);
 }
 
 #menu .active {
-    font-weight: 700;
+    color: var(--primary);
+    font-weight: 600;
 }
 
-/* ---- Homepage: Vanta background + glass hero card ----------------------- */
+/* ---- Headline voice: large, tight-tracked, quiet meta -------------------- */
+
+.post-title,
+.first-entry .entry-header h1,
+.home-info .entry-header h1 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.post-single .post-title {
+    font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.6rem);
+    line-height: 1.15;
+}
+
+.post-meta,
+.entry-footer {
+    color: var(--secondary);
+    font-size: 0.85em;
+}
+
+.post-description {
+    color: var(--secondary);
+    margin-top: 6px;
+}
+
+.breadcrumbs {
+    font-size: 0.85em;
+    color: var(--secondary);
+}
+
+/* ---- Homepage: Vanta background + hero ----------------------------------- */
 
 #vanta-background {
     position: fixed;
     inset: 0;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.55;
     /* gradient fallback shown until (or instead of) the animation loads */
     background:
         radial-gradient(60% 50% at 30% 30%, oklch(30% 0.09 30 / 0.5), transparent 70%),
-        rgb(29, 30, 32);
+        rgb(17, 17, 19);
 }
 
 @media (max-width: 650px) {
     #vanta-background {
-        opacity: 0.25;
+        opacity: 0.2;
     }
 }
 
-/* progressive blur of the animation as the visitor scrolls (CSS-only,
-   replaces the old JS scroll listener) */
+/* the animation blurs and fades away as the visitor scrolls into the list
+   (CSS-only, replaces the old JS scroll listener) */
 @supports (animation-timeline: scroll()) {
     #vanta-background {
-        animation: vanta-blur linear both;
+        animation: vanta-out linear both;
         animation-timeline: scroll(root);
-        animation-range: 0 100vh;
+        animation-range: 0 90vh;
     }
 
-    @keyframes vanta-blur {
+    @keyframes vanta-out {
         to {
-            filter: blur(10px);
+            filter: blur(8px);
+            opacity: 0;
         }
     }
 }
 
 .home-info {
-    margin-top: clamp(7rem, 32svh, 21rem);
+    margin-top: clamp(6rem, 30svh, 19rem);
     padding: var(--space-m);
-    border-radius: calc(var(--radius) * 1.5);
+    border-radius: 12px;
     border: 1px solid var(--border);
-    background: color-mix(in oklab, var(--entry) 72%, transparent);
-    -webkit-backdrop-filter: blur(12px) saturate(1.3);
-    backdrop-filter: blur(12px) saturate(1.3);
-    animation: rise-in 0.9s ease-out both;
+    background: color-mix(in oklab, var(--entry) 78%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    animation: rise-in 0.8s ease-out both;
 }
 
-@supports not (backdrop-filter: blur(12px)) {
+@supports not (backdrop-filter: blur(14px)) {
     .home-info {
         background: var(--entry);
     }
 }
 
+.home-info .entry-header h1 {
+    font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.3rem);
+}
+
+.home-info .entry-content {
+    color: var(--content);
+    line-height: 1.7;
+}
+
+.home-info .entry-content blockquote {
+    border-inline-start: 2px solid var(--accent);
+    color: var(--primary);
+}
+
+/* quiet ghost buttons, Cursor-style */
 .home-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-s);
+    gap: 10px;
     margin: var(--space-s) 0;
 }
 
 .home-buttons .button {
-    padding: 6px 14px;
-    border-radius: var(--radius);
+    padding: 7px 16px;
+    border-radius: 8px;
     border: 1px solid var(--border);
-    background: var(--accent-subtle);
-    transition: transform 0.15s ease, background 0.15s ease;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.9em;
+    transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .home-buttons .button:hover {
-    transform: translateY(-2px);
-    background: color-mix(in oklab, var(--accent) 26%, transparent);
+    border-color: var(--secondary);
+    background: var(--accent-subtle);
 }
 
 @keyframes rise-in {
     from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(12px);
     }
 }
 
-/* ---- Post list cards ----------------------------------------------------- */
+/* ---- Post list: editorial rows, not cards -------------------------------- */
 
 .post-entry {
-    min-height: 10px;
-    margin: var(--space-s) 0;
-    border: 1px solid var(--border);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    animation: rise-in 0.5s ease-out both;
+    /* page-surface color (not transparent): reads as a seamless row while
+       masking the fixed Vanta animation behind the homepage list */
+    background: var(--theme);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: clamp(1.25rem, 1rem + 1vw, 1.75rem) 4px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
 }
 
 .post-entry:hover,
 .post-entry:active {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px hsl(0deg 0% 0% / 0.18);
+    transform: none;
+    box-shadow: none;
+    background: var(--entry);
 }
 
 .post-entry .entry-header h2 {
-    margin: 1px 0;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    transition: color 0.15s ease;
 }
 
-/* reveal cards as they scroll into view (CSS-only) */
+.post-entry:hover .entry-header h2 {
+    color: var(--accent);
+}
+
+.post-entry .entry-content {
+    color: var(--secondary);
+    margin: 6px 0 10px;
+    line-height: 1.55;
+}
+
+.post-entry .entry-footer {
+    font-size: 0.8em;
+}
+
+/* the homepage's first list entry sits over the animation — give it the
+   same quiet row treatment */
+.first-entry:not(.home-info) {
+    min-height: auto;
+}
+
+/* reveal rows as they scroll into view (CSS-only, subtle) */
 @supports (animation-timeline: view()) {
     .post-entry {
         animation: rise-in linear both;
         animation-timeline: view();
-        animation-range: entry 0% entry 40%;
+        animation-range: entry 0% entry 30%;
     }
 }
 
-/* ---- Posts (single) ------------------------------------------------------ */
+/* ---- Posts (single): editorial reading experience ------------------------ */
 
 .post-single .post-content {
-    line-height: 1.65;
+    line-height: 1.75;
+    font-size: 1.02em;
 }
 
 .post-content p {
     text-wrap: pretty;
 }
 
-.post-header h1,
-.post-entry h2,
-.home-info h1 {
-    text-wrap: balance;
+.post-content a {
+    box-shadow: 0 1px 0 var(--secondary);
+    transition: box-shadow 0.15s ease, color 0.15s ease;
 }
 
-/* sticky table of contents (from the old fork) */
+.post-content a:hover {
+    color: var(--accent);
+    box-shadow: 0 1px 0 var(--accent);
+}
+
+.post-header {
+    margin-top: var(--space-m);
+    margin-bottom: var(--space-m);
+}
+
+/* sticky table of contents */
 .toc {
     position: sticky;
     top: 5rem;
     z-index: 100;
+    border: 1px solid var(--border);
+    background: var(--entry);
 }
 
 /* reading progress bar (CSS-only, no scroll JS) */
@@ -221,7 +327,7 @@ h1[id], h2[id], h3[id], h4[id] {
         position: fixed;
         top: 0;
         left: 0;
-        height: 3px;
+        height: 2px;
         width: 100%;
         z-index: 1001;
         transform-origin: 0 50%;
@@ -238,14 +344,16 @@ h1[id], h2[id], h3[id], h4[id] {
     }
 }
 
-/* ---- Footer -------------------------------------------------------------- */
+/* ---- Footer: minimal hairline ------------------------------------------- */
 
 .footer {
-    border-bottom: 0.35rem solid var(--accent);
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.8em;
 }
 
 .top-link {
-    border-radius: 5px;
+    border-radius: 8px;
     bottom: 30px;
 }
 

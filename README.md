@@ -21,8 +21,9 @@ If `themes/PaperMod` is empty: `git submodule update --init`.
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/hugo.yml`, which builds the site and
-deploys it to GitHub Pages. Never commit `public/` — it is build output and gitignored.
+The site is deployed by **Netlify**, which watches this repo and builds on every push
+(`netlify.toml`: `hugo --gc --minify`, Hugo pinned via `HUGO_VERSION`). Never commit
+`public/` — it is build output and gitignored.
 
 ## Authoring
 

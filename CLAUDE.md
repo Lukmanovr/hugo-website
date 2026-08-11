@@ -6,8 +6,9 @@
   deprecation WARNs come from the PaperMod submodule itself and are expected until
   upstream fixes them).
 - Dev server: `hugo server`.
-- Source of truth branch: `main`. Deploys run via `.github/workflows/hugo.yml`
-  (GitHub Actions → GitHub Pages). Never commit `public/` — it is gitignored build output.
+- Deploys run via **Netlify** (`netlify.toml`), which builds the pushed branch with Hugo.
+  Keep `main` and `gh-pages` in sync (Netlify currently watches `gh-pages`).
+  Never commit `public/` — it is gitignored build output.
 
 ## Hard rules
 

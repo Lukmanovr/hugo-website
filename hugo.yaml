@@ -47,7 +47,7 @@ params:
   defaultTheme: auto # follows OS preference on first visit
   disableThemeToggle: false # sun/moon on-off switch in the header
   stickyHeader: true
-  ShowReadingTime: false
+  ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
@@ -75,15 +75,13 @@ params:
 # home_info mode drives the homepage (profileMode stays off — the Vanta
   # background and hero live in the home_info partial override)
   homeInfoParams:
-    Title: "Hi 👋 there!"
+    Title: "Hi, I'm Rustam 👋"
     Content: |
-      > ### I am a Research Scientist interested in scalable, principled methods for analyzing graph data in an unsupervised manner.
+      I'm a research scientist. I build scalable, principled methods for making sense of graph data — without supervision.
 
-      I received my Ph.D. 🎓 in experimental physics at the University of Bern, advised by Prof. Peter Wurz. I did my masters and bachelors at Saint Petersburg State University. My M.Sc. advisor was Alexey Goncharov. In Russian, my name reads as Рустам Лукманов.
+      Ph.D. in experimental physics from the University of Bern, advised by Prof. Peter Wurz. M.Sc. and B.Sc. from Saint Petersburg State University, advised by Alexey Goncharov. In Russian, my name reads as Рустам Лукманов.
 
-      For publications, see [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao). For code, see [GitHub](https://github.com/Lukmanovr).
-
-      Feel free to contact me by email: mail at rustam-lukmanov dot ru.
+      Publications live on [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao), code on [GitHub](https://github.com/Lukmanovr). Or write me: mail at rustam-lukmanov dot ru.
     buttons:
       - name: Blog
         url: /posts/
@@ -106,8 +104,8 @@ params:
 
   cover:
     hidden: false # hide everywhere but not in structured data
-    hiddenInList: false # hide on list pages and home
-    hiddenInSingle: false # hide on single page
+    hiddenInList: true # editorial text rows on list pages, no thumbnails
+    hiddenInSingle: false # covers still show on the post itself
 
   # https://fusejs.io/api/options.html
   fuseOpts:
