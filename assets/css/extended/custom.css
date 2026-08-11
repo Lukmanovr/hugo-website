@@ -1,0 +1,276 @@
+/* ==========================================================================
+   Site customizations on top of PaperMod (loaded after core theme CSS).
+   Replaces the old wholesale-copied theme stylesheets; only deltas live here.
+   ========================================================================== */
+
+/* ---- Design tokens ------------------------------------------------------ */
+
+:root {
+    /* brand accent: the Vanta trunk red, defined once in oklch */
+    --accent: oklch(55% 0.21 30);
+    --accent-subtle: oklch(55% 0.21 30 / 0.14);
+
+    /* fluid type & space scales */
+    --step-0: clamp(0.9rem, 0.84rem + 0.3vw, 1.05rem);
+    --space-s: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
+    --space-m: clamp(1.25rem, 1rem + 1vw, 2rem);
+
+    /* layout tweaks carried over from the old fork */
+    --gap: 21px;
+    --main-width: 820px;
+}
+
+body {
+    font-size: var(--step-0);
+}
+
+/* previous fork tightened the dark entry surface to near-black */
+[data-theme="dark"] {
+    --entry: rgb(29, 30, 32);
+}
+
+/* ---- Header logo: light/dark variants ------------------------------------ */
+/* logo_italic7 has dark strokes (light theme); logo_italic8 is its light-stroke
+   twin for dark backgrounds */
+
+[data-theme="dark"] .logo a img {
+    content: url("/logo_italic8.png");
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme="auto"] .logo a img {
+        content: url("/logo_italic8.png");
+    }
+}
+
+/* ---- Accessibility ------------------------------------------------------ */
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+h1[id], h2[id], h3[id], h4[id] {
+    scroll-margin-top: calc(var(--header-height, 60px) + 1rem);
+}
+
+/* ---- Sticky glass header ------------------------------------------------ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: color-mix(in oklab, var(--theme) 78%, transparent);
+    -webkit-backdrop-filter: blur(10px) saturate(1.4);
+    backdrop-filter: blur(10px) saturate(1.4);
+    box-shadow: 0 3px 6px 0 hsl(0deg 0% 0% / 0.2);
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    .header {
+        background: var(--theme);
+    }
+}
+
+/* accent underline on nav hover (from the old fork, tokenized) */
+#menu a:hover {
+    box-shadow: inset 0 -0.2rem 0 0 var(--accent);
+    transition: box-shadow 0.1s ease-in;
+}
+
+#menu .active {
+    font-weight: 700;
+}
+
+/* ---- Homepage: Vanta background + glass hero card ----------------------- */
+
+#vanta-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.6;
+    /* gradient fallback shown until (or instead of) the animation loads */
+    background:
+        radial-gradient(60% 50% at 30% 30%, oklch(30% 0.09 30 / 0.5), transparent 70%),
+        rgb(29, 30, 32);
+}
+
+@media (max-width: 650px) {
+    #vanta-background {
+        opacity: 0.25;
+    }
+}
+
+/* progressive blur of the animation as the visitor scrolls (CSS-only,
+   replaces the old JS scroll listener) */
+@supports (animation-timeline: scroll()) {
+    #vanta-background {
+        animation: vanta-blur linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 100vh;
+    }
+
+    @keyframes vanta-blur {
+        to {
+            filter: blur(10px);
+        }
+    }
+}
+
+.home-info {
+    margin-top: clamp(7rem, 32svh, 21rem);
+    padding: var(--space-m);
+    border-radius: calc(var(--radius) * 1.5);
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--entry) 72%, transparent);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+    backdrop-filter: blur(12px) saturate(1.3);
+    animation: rise-in 0.9s ease-out both;
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+    .home-info {
+        background: var(--entry);
+    }
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin: var(--space-s) 0;
+}
+
+.home-buttons .button {
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--accent-subtle);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.home-buttons .button:hover {
+    transform: translateY(-2px);
+    background: color-mix(in oklab, var(--accent) 26%, transparent);
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+}
+
+/* ---- Post list cards ----------------------------------------------------- */
+
+.post-entry {
+    min-height: 10px;
+    margin: var(--space-s) 0;
+    border: 1px solid var(--border);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    animation: rise-in 0.5s ease-out both;
+}
+
+.post-entry:hover,
+.post-entry:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px hsl(0deg 0% 0% / 0.18);
+}
+
+.post-entry .entry-header h2 {
+    margin: 1px 0;
+}
+
+/* reveal cards as they scroll into view (CSS-only) */
+@supports (animation-timeline: view()) {
+    .post-entry {
+        animation: rise-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+    }
+}
+
+/* ---- Posts (single) ------------------------------------------------------ */
+
+.post-single .post-content {
+    line-height: 1.65;
+}
+
+.post-content p {
+    text-wrap: pretty;
+}
+
+.post-header h1,
+.post-entry h2,
+.home-info h1 {
+    text-wrap: balance;
+}
+
+/* sticky table of contents (from the old fork) */
+.toc {
+    position: sticky;
+    top: 5rem;
+    z-index: 100;
+}
+
+/* reading progress bar (CSS-only, no scroll JS) */
+@supports (animation-timeline: scroll()) {
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        z-index: 1001;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        background: var(--accent);
+        animation: reading-progress linear both;
+        animation-timeline: scroll(root);
+    }
+
+    @keyframes reading-progress {
+        to {
+            transform: scaleX(1);
+        }
+    }
+}
+
+/* ---- Footer -------------------------------------------------------------- */
+
+.footer {
+    border-bottom: 0.35rem solid var(--accent);
+}
+
+.top-link {
+    border-radius: 5px;
+    bottom: 30px;
+}
+
+/* ---- Iframe demo embeds -------------------------------------------------- */
+
+.iframe-container iframe {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+/* ---- Cross-document View Transitions (MPA) ------------------------------- */
+
+@view-transition {
+    navigation: auto;
+}
+
+/* ---- Motion discipline ---------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

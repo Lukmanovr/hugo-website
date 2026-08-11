@@ -1,0 +1,155 @@
+baseURL: "https://rustam-lukmanov.com"
+title: Rustam A. Lukmanov
+theme: PaperMod
+
+defaultContentLanguage: en
+languages:
+  en:
+    weight: 1
+    params:
+      title: Rustam A. Lukmanov
+
+pagination:
+  pagerSize: 10
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # allows raw HTML/JS in markdown (iframe demos)
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # required by fastsearch
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # enables opengraph, twitter-cards and schema
+  title: Rustam A. Lukmanov
+  description: "Rustam Lukmanov — research scientist working on unsupervised analysis of graph data. Ph.D. in experimental physics, University of Bern."
+  keywords: [Blog, Portfolio, Rustam Lukmanov]
+  author: Lukmanov R.A.
+  images: ["/Profile.webp"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # follows OS preference on first visit
+  disableThemeToggle: false # sun/moon on-off switch in the header
+  stickyHeader: true
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: false
+
+  assets:
+    favicon: "/circle4.webp"
+    favicon16x16: "/circle4.webp"
+    favicon32x32: "/circle4.webp"
+    apple_touch_icon: "/circle4.webp"
+    safari_pinned_tab: "/circle4.webp"
+
+  label:
+    text: "Rustam A. Lukmanov"
+    icon: /logo_italic7.png
+    iconHeight: 35
+
+# home_info mode drives the homepage (profileMode stays off — the Vanta
+  # background and hero live in the home_info partial override)
+  homeInfoParams:
+    Title: "Hi 👋 there!"
+    Content: |
+      > ### I am a Research Scientist interested in scalable, principled methods for analyzing graph data in an unsupervised manner.
+
+      I received my Ph.D. 🎓 in experimental physics at the University of Bern, advised by Prof. Peter Wurz. I did my masters and bachelors at Saint Petersburg State University. My M.Sc. advisor was Alexey Goncharov. In Russian, my name reads as Рустам Лукманов.
+
+      For publications, see [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao). For code, see [GitHub](https://github.com/Lukmanovr).
+
+      Feel free to contact me by email: mail at rustam-lukmanov dot ru.
+    buttons:
+      - name: Blog
+        url: /posts/
+      - name: Publications
+        url: /publications/
+      - name: Resume
+        url: /cv/
+      - name: Contact
+        url: /contact/
+
+  socialIcons:
+    - name: googlescholar
+      url: "https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao"
+    - name: github
+      url: "https://github.com/Lukmanovr"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/rustam-lukmanov-604695100/"
+    - name: email
+      url: "mailto:mail@rustam-lukmanov.ru"
+
+  cover:
+    hidden: false # hide everywhere but not in structured data
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    - identifier: Home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: Posts
+      name: Posts
+      url: /posts/
+      weight: 20
+    - identifier: Tags
+      name: Tags
+      url: /tags/
+      weight: 30
+    - identifier: Archive
+      name: Archive
+      url: /archives/
+      weight: 40
+    - identifier: Publications
+      name: Publications
+      url: /publications/
+      weight: 50
+    - identifier: CV
+      name: CV
+      url: /CV/
+      weight: 60
+    - identifier: Contact
+      name: Contact
+      url: /contact/
+      weight: 70
+    - identifier: Search
+      name: Search
+      url: /search/
+      weight: 80

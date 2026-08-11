@@ -1,0 +1,27 @@
+{{- /* Site customizations on top of PaperMod's head:
+     - GA4 (production only, async) — the single analytics stack
+     - Speculation Rules: prerender same-origin pages for instant navigation
+     - Cross-document View Transitions are enabled in assets/css/extended/custom.css */ -}}
+{{- if hugo.IsProduction }}
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3EMDQYRZC3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-3EMDQYRZC3');
+</script>
+{{- end }}
+<script type="speculationrules">
+{
+    "prerender": [{
+        "where": {
+            "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/PDF/*" } }
+            ]
+        },
+        "eagerness": "moderate"
+    }]
+}
+</script>

@@ -1,0 +1,54 @@
+{{- /* Site customization: full-viewport Vanta "trunk" animated background behind a
+     glass hero card. Libraries are self-hosted (assets/js/vendor, pinned) and
+     lazy-loaded after idle; skipped entirely for prefers-reduced-motion. */ -}}
+{{- with site.Params.homeInfoParams }}
+<div id="vanta-background" aria-hidden="true"></div>
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    {{- with .buttons }}
+    <div class="home-buttons">
+        {{- range . }}
+        <a class="button" href="{{ trim .url " " }}" rel="noopener" title="{{ .name }}">
+            <span class="button-inner">{{ .name }}</span>
+        </a>
+        {{- end }}
+    </div>
+    {{- end }}
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+    </footer>
+</article>
+{{- $p5 := resources.Get "js/vendor/p5.min.js" | fingerprint }}
+{{- $vanta := resources.Get "js/vendor/vanta.trunk.min.js" | fingerprint }}
+{{- $init := resources.Get "js/vanta-init.js" | resources.Minify | fingerprint }}
+<script>
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        function inject(src) {
+            return new Promise(function (resolve, reject) {
+                var s = document.createElement('script');
+                s.src = src;
+                s.onload = resolve;
+                s.onerror = reject;
+                document.head.appendChild(s);
+            });
+        }
+        function start() {
+            inject('{{ $p5.RelPermalink }}')
+                .then(function () { return inject('{{ $vanta.RelPermalink }}'); })
+                .then(function () { return inject('{{ $init.RelPermalink }}'); })
+                .catch(function () { /* background stays on the CSS gradient fallback */ });
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(start, { timeout: 2000 });
+        } else {
+            setTimeout(start, 300);
+        }
+    })();
+</script>
+{{- end -}}
