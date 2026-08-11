@@ -1,28 +1,16 @@
-{{- /* Site customization: full-viewport Vanta "trunk" animated background behind a
-     glass hero card. Libraries are self-hosted (assets/js/vendor, pinned) and
-     lazy-loaded after idle; skipped entirely for prefers-reduced-motion. */ -}}
+{{- /* Site customization: left-aligned editorial intro followed by a contained
+     "art panel" running the Vanta trunk animation (Cursor-cover style — art
+     lives inside a bordered card, never behind content). Libraries are
+     self-hosted (assets/js/vendor, pinned) and lazy-loaded after idle;
+     reduced-motion visitors get the panel's static gradient. */ -}}
 {{- with site.Params.homeInfoParams }}
-<div id="vanta-background" aria-hidden="true"></div>
-<article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>{{ .Title | markdownify }}</h1>
-    </header>
-    <div class="entry-content">
+<section class="intro">
+    <h1>{{ .Title | markdownify }}</h1>
+    <div class="intro-body">
         {{ .Content | markdownify }}
     </div>
-    {{- with .buttons }}
-    <div class="home-buttons">
-        {{- range . }}
-        <a class="button" href="{{ trim .url " " }}" rel="noopener" title="{{ .name }}">
-            <span class="button-inner">{{ .name }}</span>
-        </a>
-        {{- end }}
-    </div>
-    {{- end }}
-    <footer class="entry-footer">
-        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
-    </footer>
-</article>
+</section>
+<div id="vanta-background" class="art-panel" aria-hidden="true"></div>
 {{- $p5 := resources.Get "js/vendor/p5.min.js" | fingerprint }}
 {{- $vanta := resources.Get "js/vendor/vanta.trunk.min.js" | fingerprint }}
 {{- $init := resources.Get "js/vanta-init.js" | resources.Minify | fingerprint }}
@@ -42,7 +30,7 @@
             inject('{{ $p5.RelPermalink }}')
                 .then(function () { return inject('{{ $vanta.RelPermalink }}'); })
                 .then(function () { return inject('{{ $init.RelPermalink }}'); })
-                .catch(function () { /* background stays on the CSS gradient fallback */ });
+                .catch(function () { /* panel keeps its CSS gradient */ });
         }
         if ('requestIdleCallback' in window) {
             requestIdleCallback(start, { timeout: 2000 });

@@ -32,3 +32,16 @@
 `#vanta-background` div. p5 + vanta.trunk + `assets/js/vanta-init.js` are injected
 after `requestIdleCallback`; the div's CSS gradient is the no-JS/reduced-motion fallback.
 Effect tuning (color `0xff3000`, chaos, spacing) lives in `vanta-init.js`.
+
+## Design system (see DESIGN_PLAN.md for rationale)
+
+- Radii: only `--r-xs` (4px) and `--r-md` (8px). No other corner values, ever.
+- No glassmorphism, no backdrop-filter, no decorative gradients or shadows.
+- Warm palette: dark `#14120e`/`#1b1814`, light `#faf9f6`/`#f2f0eb`; accent (trunk red)
+  is for links/focus/progress only, never fills.
+- Typeface: Geist (static/fonts/GeistVF.woff2, self-hosted). Headings weight 500-600,
+  tracking -0.02em — never bold-heavy.
+- The trunk animation lives INSIDE the homepage art panel (contained card), never
+  behind content.
+- Copy voice: declarative, no emoji, no greetings/exclamations, sentence case,
+  links are nouns. Post lists show date + title only.

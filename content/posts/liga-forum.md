@@ -17,7 +17,6 @@ disableShare: false
 hideSummary: false
 searchHidden: false
 ShowReadingTime: true
-ShowBreadCrumbs: true
 ShowPostNavLinks: true
 cover:
     image: "" # image path/url
@@ -25,10 +24,7 @@ cover:
     caption:  # display caption under cover
     relative: true # when using page bundles set this to true
     hidden: true # only hide on current single page
-editPost:
-    URL: "mailto:mail@rustam-lukmanov.ru"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+
 ---
 
 This week, I'll be addressing students at the LIGA-Forum (https://liga-forum.ru) 2024 in Kazan. Below you can find my presentation on "Trends in and around AI" from the forum.

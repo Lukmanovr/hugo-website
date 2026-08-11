@@ -18,7 +18,6 @@ disableShare: false
 hideSummary: false
 searchHidden: false
 ShowReadingTime: true
-ShowBreadCrumbs: true
 ShowPostNavLinks: true
 cover:
     image: "images/innopolis_university.webp" # image path/url
@@ -26,10 +25,7 @@ cover:
     caption:  # display caption under cover
     relative: true # when using page bundles set this to true
     hidden: true # only hide on current single page
-editPost:
-    URL: "mailto:mail@rustam-lukmanov.ru"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+
 ---
 
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">

@@ -1,5 +1,5 @@
 baseURL: "https://rustam-lukmanov.com"
-title: Rustam A. Lukmanov
+title: Rustam Lukmanov
 theme: PaperMod
 
 defaultContentLanguage: en
@@ -7,7 +7,7 @@ languages:
   en:
     weight: 1
     params:
-      title: Rustam A. Lukmanov
+      title: Rustam Lukmanov
 
 pagination:
   pagerSize: 10
@@ -38,7 +38,7 @@ minify:
 
 params:
   env: production # enables opengraph, twitter-cards and schema
-  title: Rustam A. Lukmanov
+  title: Rustam Lukmanov
   description: "Rustam Lukmanov — research scientist working on unsupervised analysis of graph data. Ph.D. in experimental physics, University of Bern."
   keywords: [Blog, Portfolio, Rustam Lukmanov]
   author: Lukmanov R.A.
@@ -61,6 +61,7 @@ params:
   tocopen: false
 
   assets:
+    theme_color: "#14120e"
     favicon: "/circle4.webp"
     favicon16x16: "/circle4.webp"
     favicon32x32: "/circle4.webp"
@@ -68,29 +69,20 @@ params:
     safari_pinned_tab: "/circle4.webp"
 
   label:
-    text: "Rustam A. Lukmanov"
+    text: "Rustam Lukmanov"
     icon: /logo_italic7.png
     iconHeight: 35
 
 # home_info mode drives the homepage (profileMode stays off — the Vanta
   # background and hero live in the home_info partial override)
   homeInfoParams:
-    Title: "Hi, I'm Rustam 👋"
+    Title: "Rustam Lukmanov"
     Content: |
-      I'm a research scientist. I build scalable, principled methods for making sense of graph data — without supervision.
+      Research scientist. I develop scalable, principled methods for the unsupervised analysis of graph-structured data.
 
-      Ph.D. in experimental physics from the University of Bern, advised by Prof. Peter Wurz. M.Sc. and B.Sc. from Saint Petersburg State University, advised by Alexey Goncharov. In Russian, my name reads as Рустам Лукманов.
+      Ph.D. in experimental physics from the University of Bern, advised by Prof. Peter Wurz. Previously at Saint Petersburg State University (M.Sc., B.Sc., advised by Alexey Goncharov).
 
-      Publications live on [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao), code on [GitHub](https://github.com/Lukmanovr). Or write me: mail at rustam-lukmanov dot ru.
-    buttons:
-      - name: Blog
-        url: /posts/
-      - name: Publications
-        url: /publications/
-      - name: Resume
-        url: /cv/
-      - name: Contact
-        url: /contact/
+      [Google Scholar](https://scholar.google.ch/citations?user=uJXEpcgAAAAJ&hl=en&oi=ao) · [GitHub](https://github.com/Lukmanovr) · [LinkedIn](https://www.linkedin.com/in/rustam-lukmanov-604695100/) · [mail@rustam-lukmanov.ru](mailto:mail@rustam-lukmanov.ru)
 
   socialIcons:
     - name: googlescholar
@@ -119,22 +111,10 @@ params:
 
 menu:
   main:
-    - identifier: Home
-      name: Home
-      url: /
-      weight: 10
     - identifier: Posts
       name: Posts
       url: /posts/
       weight: 20
-    - identifier: Tags
-      name: Tags
-      url: /tags/
-      weight: 30
-    - identifier: Archive
-      name: Archive
-      url: /archives/
-      weight: 40
     - identifier: Publications
       name: Publications
       url: /publications/

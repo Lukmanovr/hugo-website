@@ -1,5 +1,5 @@
 ---
-title: "Contact 📬"
+title: "Contact"
 layout: "Contact"
 url: "/contact/"
 summary: Contact

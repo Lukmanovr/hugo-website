@@ -1,5 +1,5 @@
 ---
-title: "Multiwavelenght ablation/ionization of the 1.88 Ga Gunflint chert"
+title: "Multiwavelength ablation/ionization of the 1.88 Ga Gunflint chert"
 date: 2022-02-23T11:30:03+00:00
 # weight: 1
 # aliases: ["/first"]
@@ -17,7 +17,6 @@ disableShare: false
 hideSummary: false
 searchHidden: false
 ShowReadingTime: true
-ShowBreadCrumbs: true
 ShowPostNavLinks: true
 cover:
     image: /images/Frontiers/lims.webp # image path/url
@@ -25,10 +24,7 @@ cover:
     caption: "Correlation graph from measured inclusions" # display caption under cover
     relative: true # when using page bundles set this to true
     hidden: true # only hide on current single page
-editPost:
-    URL: "mailto:mail@rustam-lukmanov.ru"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+
 ---
 
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">

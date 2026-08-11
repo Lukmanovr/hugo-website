@@ -136,6 +136,72 @@ Extracted from `cursor.com` production CSS and page screenshots:
 
 ---
 
+## Phase G — Voice & copy: write like a serious publication
+
+Owner directive: no emoji; the site must feel extra professional, high-end, high-quality.
+My own critique of the current copy, and the fixes:
+
+**Critique**
+
+1. "Hi, I'm Rustam 👋" — greeting-card register. High-end personal sites and Cursor
+   alike open with a *statement of what the person/company does*, not a salutation.
+2. "mail at rustam-lukmanov dot ru" — 2009-era spam obfuscation; reads as clutter and
+   breaks copy-paste. The address is already public in mailto: links on the same page.
+3. "Publications live on Google Scholar" — chatty. Links should be nouns, not sentences.
+4. Emoji in headings and body (👋 🎓) — banned per owner.
+5. "In Russian, my name reads as Рустам Лукманов" — warm but out of place in a 4-line
+   hero; belongs on the CV page.
+6. Post titles are inconsistent and carry typos: "Multiwavelenght ablation/ionization…"
+   (misspelled), "Frontiers in space tech" (casual), mixed Title Case / sentence case.
+7. Every post carries an editPost "Suggest Changes" mailto link — informal, and unusual
+   for a personal blog; remove.
+8. Breadcrumbs ("Home » Posts »") add navigation chrome a 3-section site doesn't need.
+9. Site `title`/header label "Rustam A. Lukmanov" with the middle initial reads
+   bureaucratic in nav context; keep the initial for citations/CV, drop it in the masthead.
+10. Menu has 8 items (Home/Posts/Tags/Archive/Publications/CV/Contact/Search) — a
+    boutique site should show 4–5. Tags and Archive are power-user views, reachable
+    from the Posts page; Home is the logo.
+
+**Voice principles** (apply everywhere): declarative sentences; no exclamation marks,
+no emoji, no greetings; sentence case for headings; links are nouns ("Google Scholar",
+not "see my publications here"); en dashes with spaces for asides; state facts once,
+in the place a reader expects them.
+
+**New homepage copy** (replaces homeInfoParams):
+
+> **Rustam Lukmanov**
+>
+> Research scientist. I develop scalable, principled methods for the unsupervised
+> analysis of graph-structured data.
+>
+> Ph.D. in experimental physics from the University of Bern, advised by
+> Prof. Peter Wurz. Previously at Saint Petersburg State University (M.Sc., B.Sc.,
+> advised by Alexey Goncharov).
+>
+> [Google Scholar] · [GitHub] · [LinkedIn] · [mail@rustam-lukmanov.ru]
+
+No buttons row (nav already covers Publications/CV/Contact); the links line and icon
+row carry the actions. The Russian-name note moves to the CV page.
+
+**Mechanical tasks**
+
+- Strip emoji site-wide in templates/config; fix "Multiwavelenght" → "Multiwavelength"
+  (title only — the URL keeps its slug), retitle "Frontiers in space tech" →
+  "Frontiers in space technologies" (or the paper's actual title), normalize post
+  titles to sentence case where they aren't proper nouns.
+- Remove `editPost` blocks and `ShowBreadCrumbs` from all post front matter;
+  disable breadcrumbs.
+- Masthead label → "Rustam Lukmanov"; site `<title>` → "Rustam Lukmanov — Research
+  Scientist"; keep "Lukmanov R.A." as citation author in metadata.
+- Menu → Posts · Publications · CV · Contact · Search (Tags/Archive links move to the
+  Posts page context; Archive stays routable).
+- Footer: "© 2026 Rustam Lukmanov" only.
+
+**Accept:** zero emoji anywhere in rendered HTML; hero reads as a professional
+statement; menus ≤ 5 items; no typos in any visible title.
+
+---
+
 ## Explicitly rejected (so nobody re-adds them)
 
 - Glassmorphism / backdrop blur — Cursor has none; it was our main "cheap" tell.

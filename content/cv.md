@@ -14,7 +14,6 @@ showToc: false
 TocOpen: false
 description: "A summary of my qualifications, education and held positions."
 ShowReadingTime: true
-ShowBreadCrumbs: true
 ShowPostNavLinks: true
 cover:
   image: images/Profile.webp

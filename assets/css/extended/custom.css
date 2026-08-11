@@ -1,51 +1,150 @@
 /* ==========================================================================
-   Site customizations on top of PaperMod (loaded after core theme CSS).
-   Aesthetic direction: editorial-minimal, modeled on the Cursor blog —
-   monochrome restraint, generous whitespace, hairline dividers, row-based
-   post list, stacked meta over tight-tracked titles. The red accent is used
-   sparingly (links, progress bar, focus rings) rather than as decoration.
+   Site design system on top of PaperMod — see DESIGN_PLAN.md.
+   Direction: warm editorial minimalism (evidence-based from cursor.com/blog):
+   flat warm surfaces, hairline borders, 4/8px radii only, no blur/glass,
+   medium-weight tight-tracked headlines, narrow prose measure.
    ========================================================================== */
 
-/* ---- Design tokens ------------------------------------------------------ */
+/* ---- Typeface ------------------------------------------------------------ */
+
+@font-face {
+    font-family: "Geist";
+    src: url("/fonts/GeistVF.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* metric-compatible fallback keeps CLS ~0 while Geist loads */
+@font-face {
+    font-family: "Geist Fallback";
+    src: local("Helvetica Neue"), local("Arial");
+    size-adjust: 98%;
+    ascent-override: 95%;
+    descent-override: 24%;
+}
+
+/* ---- Tokens -------------------------------------------------------------- */
 
 :root {
-    /* brand accent: the Vanta trunk red, defined once in oklch */
-    --accent: oklch(55% 0.21 30);
-    --accent-subtle: oklch(55% 0.21 30 / 0.12);
+    --font-sans: "Geist", "Geist Fallback", system-ui, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    /* fluid type & space scales */
-    --step-0: clamp(0.95rem, 0.89rem + 0.25vw, 1.06rem);
-    --space-s: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
-    --space-m: clamp(1.5rem, 1.2rem + 1.2vw, 2.5rem);
+    /* the only two radii on the site */
+    --r-xs: 4px;
+    --r-md: 8px;
+
+    --accent: oklch(58% 0.17 30);
 
     --gap: 24px;
-    --main-width: 760px;
+    --main-width: 820px;
+
+    /* light: warm paper */
+    --theme: #faf9f6;
+    --entry: #f2f0eb;
+    --hover: #f0eee8;
+    --primary: #26251e;
+    --secondary: rgb(38 37 30 / 0.58);
+    --tertiary: #eae7e0;
+    --content: #33312a;
+    --border: #e4e0d7;
+    --code-bg: #f2f0eb;
+    --hljs-bg: #f2f0eb;
 }
 
-body {
-    font-size: var(--step-0);
-    letter-spacing: 0.005em;
-}
-
-/* near-black editorial dark surface */
 [data-theme="dark"] {
-    --theme: rgb(17, 17, 19);
-    --entry: rgb(24, 24, 27);
-    --border: rgb(39, 39, 42);
+    /* dark: warm near-black */
+    --theme: #14120e;
+    --entry: #1b1814;
+    --hover: #211d18;
+    --primary: #ececea;
+    --secondary: rgb(236 236 234 / 0.52);
+    --tertiary: #211d18;
+    --content: #d6d4d1;
+    --border: #2c2822;
+    --code-bg: #1b1814;
+    --hljs-bg: #1b1814;
 }
 
 @media (prefers-color-scheme: dark) {
     [data-theme="auto"] {
-        --theme: rgb(17, 17, 19);
-        --entry: rgb(24, 24, 27);
-        --border: rgb(39, 39, 42);
+        --theme: #14120e;
+        --entry: #1b1814;
+        --hover: #211d18;
+        --primary: #ececea;
+        --secondary: rgb(236 236 234 / 0.52);
+        --tertiary: #211d18;
+        --content: #d6d4d1;
+        --border: #2c2822;
+        --code-bg: #1b1814;
+        --hljs-bg: #1b1814;
     }
 }
 
-/* ---- Header logo: light/dark variants ------------------------------------ */
-/* logo_italic7 has dark strokes (light theme); logo_italic8 is its light-stroke
-   twin for dark backgrounds */
+/* ---- Base ---------------------------------------------------------------- */
 
+body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    letter-spacing: 0.005em;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: -0.02em;
+    font-weight: 550;
+    text-wrap: balance;
+}
+
+code, pre, kbd {
+    font-family: var(--font-mono);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--r-xs);
+}
+
+h1[id], h2[id], h3[id], h4[id] {
+    scroll-margin-top: calc(var(--header-height, 60px) + 1rem);
+}
+
+::selection {
+    background: color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+/* ---- Header: flat, framed ------------------------------------------------ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--theme);
+    border-bottom: 1px solid var(--border);
+}
+
+#menu span {
+    color: var(--secondary);
+    transition: color 0.15s ease;
+    font-size: 0.95rem;
+}
+
+#menu a:hover span {
+    color: var(--primary);
+}
+
+#menu .active {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.logo a {
+    font-weight: 550;
+    letter-spacing: -0.01em;
+}
+
+/* theme-aware logo swap: logo_italic7 = dark strokes, logo_italic8 = light */
 [data-theme="dark"] .logo a img {
     content: url("/logo_italic8.png");
 }
@@ -56,240 +155,169 @@ body {
     }
 }
 
-/* ---- Accessibility ------------------------------------------------------ */
+/* ---- Homepage: intro band + contained art panel -------------------------- */
 
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
+.intro {
+    margin: clamp(2.5rem, 6vh, 4.5rem) 0 0;
+    max-width: 36rem;
 }
 
-h1[id], h2[id], h3[id], h4[id] {
-    scroll-margin-top: calc(var(--header-height, 60px) + 1rem);
+.intro h1 {
+    font-size: 1.05rem;
+    font-weight: 550;
+    letter-spacing: 0;
+    color: var(--primary);
+    margin-bottom: 14px;
 }
 
-/* ---- Sticky glass header ------------------------------------------------ */
+.intro-body > p:first-child {
+    font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    font-weight: 550;
+    color: var(--primary);
+    text-wrap: balance;
+    margin-bottom: 16px;
+}
 
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: color-mix(in oklab, var(--theme) 82%, transparent);
-    -webkit-backdrop-filter: blur(12px) saturate(1.3);
-    backdrop-filter: blur(12px) saturate(1.3);
+.intro-body p {
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.intro-body a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+}
+
+.intro-body a:hover {
+    text-decoration-color: var(--accent);
+}
+
+.art-panel {
+    height: clamp(240px, 36vh, 360px);
+    margin: var(--gap) 0 calc(var(--gap) / 2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    /* static fill until (or instead of) the animation mounts */
+    background:
+        radial-gradient(70% 90% at 50% 55%, oklch(34% 0.08 30 / 0.55), transparent 75%),
+        #1b1814;
+}
+
+.art-panel canvas {
+    display: block;
+}
+
+/* ---- Post lists: editorial table rows ------------------------------------ */
+
+.post-rows {
+    margin-top: calc(var(--gap) / 2);
+}
+
+.post-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 18px;
+    align-items: baseline;
+    padding: 17px 6px;
     border-bottom: 1px solid var(--border);
+    transition: background 0.12s ease;
 }
 
-@supports not (backdrop-filter: blur(12px)) {
-    .header {
-        background: var(--theme);
+.post-row:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.post-row:hover {
+    background: var(--hover);
+}
+
+.row-meta,
+.row-time {
+    color: var(--secondary);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.row-title {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+    color: var(--primary);
+    margin: 0;
+}
+
+.row-draft-hint {
+    color: var(--secondary);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.post-row .entry-link {
+    position: absolute;
+    inset: 0;
+}
+
+@media (max-width: 640px) {
+    .post-row {
+        grid-template-columns: 1fr;
+        row-gap: 4px;
+        padding: 14px 2px;
     }
 }
 
-#menu a:hover span {
-    color: var(--primary);
+/* list page headers */
+.page-header h1 {
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
 }
 
-#menu span {
-    transition: color 0.15s ease;
-    color: var(--secondary);
+/* ---- Article pages: editorial reading ------------------------------------ */
+
+.post-single .post-header,
+.post-single .post-content,
+.post-single .post-footer,
+.post-single .toc {
+    max-width: 660px;
+    margin-inline: auto;
 }
 
-#menu .active {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-/* ---- Headline voice: large, tight-tracked, quiet meta -------------------- */
-
-.post-title,
-.first-entry .entry-header h1,
-.home-info .entry-header h1 {
-    letter-spacing: -0.02em;
-    text-wrap: balance;
+.post-single .post-header {
+    margin-top: clamp(2rem, 5vh, 3.5rem);
+    margin-bottom: 28px;
 }
 
 .post-single .post-title {
-    font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.6rem);
-    line-height: 1.15;
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.4rem);
+    line-height: 1.18;
+    margin-bottom: 12px;
 }
 
-.post-meta,
-.entry-footer {
+.post-single .post-meta {
     color: var(--secondary);
-    font-size: 0.85em;
+    font-size: 0.85rem;
 }
 
-.post-description {
+.post-single .post-description {
     color: var(--secondary);
-    margin-top: 6px;
+    margin: 6px 0 10px;
+    font-size: 1.02rem;
 }
 
 .breadcrumbs {
-    font-size: 0.85em;
-    color: var(--secondary);
+    display: none;
 }
-
-/* ---- Homepage: Vanta background + hero ----------------------------------- */
-
-#vanta-background {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    opacity: 0.55;
-    /* gradient fallback shown until (or instead of) the animation loads */
-    background:
-        radial-gradient(60% 50% at 30% 30%, oklch(30% 0.09 30 / 0.5), transparent 70%),
-        rgb(17, 17, 19);
-}
-
-@media (max-width: 650px) {
-    #vanta-background {
-        opacity: 0.2;
-    }
-}
-
-/* the animation blurs and fades away as the visitor scrolls into the list
-   (CSS-only, replaces the old JS scroll listener) */
-@supports (animation-timeline: scroll()) {
-    #vanta-background {
-        animation: vanta-out linear both;
-        animation-timeline: scroll(root);
-        animation-range: 0 90vh;
-    }
-
-    @keyframes vanta-out {
-        to {
-            filter: blur(8px);
-            opacity: 0;
-        }
-    }
-}
-
-.home-info {
-    margin-top: clamp(6rem, 30svh, 19rem);
-    padding: var(--space-m);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: color-mix(in oklab, var(--entry) 78%, transparent);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    backdrop-filter: blur(14px) saturate(1.2);
-    animation: rise-in 0.8s ease-out both;
-}
-
-@supports not (backdrop-filter: blur(14px)) {
-    .home-info {
-        background: var(--entry);
-    }
-}
-
-.home-info .entry-header h1 {
-    font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.3rem);
-}
-
-.home-info .entry-content {
-    color: var(--content);
-    line-height: 1.7;
-}
-
-.home-info .entry-content blockquote {
-    border-inline-start: 2px solid var(--accent);
-    color: var(--primary);
-}
-
-/* quiet ghost buttons, Cursor-style */
-.home-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: var(--space-s) 0;
-}
-
-.home-buttons .button {
-    padding: 7px 16px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--primary);
-    font-size: 0.9em;
-    transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.home-buttons .button:hover {
-    border-color: var(--secondary);
-    background: var(--accent-subtle);
-}
-
-@keyframes rise-in {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-}
-
-/* ---- Post list: editorial rows, not cards -------------------------------- */
-
-.post-entry {
-    /* page-surface color (not transparent): reads as a seamless row while
-       masking the fixed Vanta animation behind the homepage list */
-    background: var(--theme);
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0;
-    padding: clamp(1.25rem, 1rem + 1vw, 1.75rem) 4px;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s ease;
-}
-
-.post-entry:hover,
-.post-entry:active {
-    transform: none;
-    box-shadow: none;
-    background: var(--entry);
-}
-
-.post-entry .entry-header h2 {
-    font-size: 1.25rem;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    transition: color 0.15s ease;
-}
-
-.post-entry:hover .entry-header h2 {
-    color: var(--accent);
-}
-
-.post-entry .entry-content {
-    color: var(--secondary);
-    margin: 6px 0 10px;
-    line-height: 1.55;
-}
-
-.post-entry .entry-footer {
-    font-size: 0.8em;
-}
-
-/* the homepage's first list entry sits over the animation — give it the
-   same quiet row treatment */
-.first-entry:not(.home-info) {
-    min-height: auto;
-}
-
-/* reveal rows as they scroll into view (CSS-only, subtle) */
-@supports (animation-timeline: view()) {
-    .post-entry {
-        animation: rise-in linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 30%;
-    }
-}
-
-/* ---- Posts (single): editorial reading experience ------------------------ */
 
 .post-single .post-content {
-    line-height: 1.75;
-    font-size: 1.02em;
+    line-height: 1.7;
+    color: var(--content);
 }
 
 .post-content p {
@@ -297,32 +325,73 @@ h1[id], h2[id], h3[id], h4[id] {
 }
 
 .post-content a {
-    box-shadow: 0 1px 0 var(--secondary);
-    transition: box-shadow 0.15s ease, color 0.15s ease;
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    box-shadow: none;
+    transition: text-decoration-color 0.15s ease;
 }
 
 .post-content a:hover {
-    color: var(--accent);
-    box-shadow: 0 1px 0 var(--accent);
+    text-decoration-color: var(--accent);
 }
 
-.post-header {
-    margin-top: var(--space-m);
-    margin-bottom: var(--space-m);
+.post-content img,
+.post-content iframe,
+.entry-cover img {
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
 }
 
-/* sticky table of contents */
+.post-content pre,
+.post-content .highlight {
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
+}
+
+.post-content :not(pre) > code {
+    border-radius: var(--r-xs);
+    background: var(--code-bg);
+    padding: 2px 5px;
+}
+
+.post-content blockquote {
+    border-inline-start: 2px solid var(--accent);
+    color: var(--secondary);
+}
+
+/* ToC: quiet bordered card, in flow (not sticky) */
 .toc {
-    position: sticky;
-    top: 5rem;
-    z-index: 100;
     border: 1px solid var(--border);
     background: var(--entry);
+    border-radius: var(--r-md);
 }
 
-/* reading progress bar (CSS-only, no scroll JS) */
+.toc a {
+    color: var(--secondary);
+}
+
+.toc a:hover {
+    color: var(--primary);
+}
+
+/* tags & share */
+.post-tags li,
+.terms-tags li {
+    border-radius: var(--r-xs);
+}
+
+.post-tags a,
+.terms-tags a {
+    border-radius: var(--r-xs);
+    background: var(--entry);
+    border: 1px solid var(--border);
+}
+
+/* reading progress, posts only */
 @supports (animation-timeline: scroll()) {
-    body::before {
+    body:has(.post-single)::before {
         content: "";
         position: fixed;
         top: 0;
@@ -344,24 +413,44 @@ h1[id], h2[id], h3[id], h4[id] {
     }
 }
 
-/* ---- Footer: minimal hairline ------------------------------------------- */
+/* ---- Shared chrome -------------------------------------------------------- */
 
 .footer {
     border-top: 1px solid var(--border);
     color: var(--secondary);
-    font-size: 0.8em;
+    font-size: 0.8rem;
+    padding: calc(var(--footer-height) / 3) var(--gap);
+}
+
+.footer a {
+    color: var(--secondary);
+}
+
+.footer a:hover {
+    color: var(--primary);
 }
 
 .top-link {
-    border-radius: 8px;
+    border-radius: var(--r-md);
     bottom: 30px;
+    background: var(--entry);
+    border: 1px solid var(--border);
 }
 
-/* ---- Iframe demo embeds -------------------------------------------------- */
+.pagination a {
+    border-radius: var(--r-md);
+    background: var(--entry);
+    border: 1px solid var(--border);
+}
 
 .iframe-container iframe {
-    border-radius: 10px;
+    border-radius: var(--r-md);
     border: 1px solid var(--border);
+}
+
+/* first-entry safety: if the theme ever renders it, keep it quiet */
+.first-entry {
+    background: transparent;
 }
 
 /* ---- Cross-document View Transitions (MPA) ------------------------------- */
