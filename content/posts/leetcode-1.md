@@ -1,35 +1,14 @@
 ---
-title: "Running python terminal with Pyscript"
+title: "Running a Python terminal in the browser with PyScript"
 date: 2022-06-03T11:30:03+00:00
-# weight: 1
-# aliases: ["/first"]
-tags: ["Leetcode", "Python", "Problem"]
+tags: ["python", "pyscript"]
 author: "Rustam A. Lukmanov"
-# author: ["Me", "You"] # multiple authors
+description: "An interactive Python REPL embedded in the page with PyScript, demonstrated on the classic two-sum problem."
 showToc: false
-TocOpen: false
-draft: false
-hidemeta: false
-comments: false
-description: "Running interactive python repl"
-disableHLJS: false # to disable highlightjs
-disableShare: false
-hideSummary: false
-searchHidden: false
 ShowReadingTime: true
-ShowPostNavLinks: true
-cover:
-    image:  # image path/url
-    alt: "<alt text>" # alt text
-    caption: "<text>" # display caption under cover
-    relative: true # when using page bundles set this to true
-    hidden: true # only hide on current single page
-
 ---
 
-<p></p>
-As an exercise we will use the leetcode solution of the 2Sum problem (using 2-pointer approach).
-Problem description: Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.
+As an exercise, let's take the classic two-sum problem: given an array of integers and a target, return the indices of the two numbers that add up to the target — assuming exactly one solution exists and each element may be used once. Here is the two-pointer solution:
 
 ```python
 def twoSum(nums, target):
@@ -51,13 +30,10 @@ target = 6
 twoSum(nums, target)
 ```
 
-Now, let's try to run this code here in the browser using Pyscript and repl. Just copy, paste the code into interactive Python repl and press the green button.
-
+Now run it right here in the browser: paste the code into the interactive REPL below and press the run button.
 
 <div class="wrapper">
-  <!-- The padding-bottom value is calculated by dividing the height by the width of the iframe and multiplying by 100 -->
-  <!-- For example, if the iframe is 100% by 700px, then the padding-bottom is 700 / 100 * 100 = 700% -->
   <div class="iframe-container" style="padding-bottom: 100%; position: relative; overflow: hidden;">
-    <iframe loading="lazy" src="/pyscript-environment.html" style="height:100%;width:100%;position:absolute;top:0;left:0;"></iframe>
+    <iframe loading="lazy" src="/pyscript-environment.html" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="Interactive Python REPL (PyScript)"></iframe>
   </div>
 </div>

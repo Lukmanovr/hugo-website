@@ -1,36 +1,18 @@
 ---
 aliases: ["/posts/trunk_nebula/"]
-title: "Remaking Trunk effect in P5.js"
+title: "Remaking the Vanta trunk effect in p5.js"
 date: 2023-05-17T15:30:03+00:00
-# weight: 1
-# aliases: ["/first"]
-tags: ["Trunk", "Vanta"]
+tags: ["generative-art", "p5js"]
 author: "Rustam A. Lukmanov"
-# author: ["Me", "You"] # multiple authors
+description: "Recreating the 'trunk' generative animation from Vanta.js in p5.js."
 showToc: false
-TocOpen: false
-draft: false
-hidemeta: false
-comments: false
-description: "Remaking the trunk effect from Vanta.js"
-disableHLJS: false # to disable highlightjs
-disableShare: false
-hideSummary: false
-searchHidden: false
 ShowReadingTime: true
-ShowPostNavLinks: true
-cover:
-    image: "" # image path/url
-    alt:  # alt text
-    caption:  # display caption under cover
-    relative: true # when using page bundles set this to true
-    hidden: true # only hide on current single page
-
 ---
-  
-New animation that I made using P5.JS - an attempt to recreate Vanta.Trunk effect:
+
+A p5.js recreation of the Vanta.js "trunk" effect — concentric, noise-driven rings drawn one ring at a time. An earlier version of this site ran the original effect as its homepage background; the flow-field panel on the current homepage is its quieter successor. The demo below generates a new pattern on every load:
+
 <div class="wrapper">
- <div class="iframe-container" style="padding-bottom: 75%; position: relative; overflow: hidden;">
- <iframe loading="lazy" src="/vanta_nebula.html" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="Iframe Example"  allow-scripts ></iframe>
- </div>
+  <div class="iframe-container" style="padding-bottom: 75%; position: relative; overflow: hidden;">
+    <iframe loading="lazy" src="/vanta_nebula.html" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="p5.js recreation of the Vanta trunk effect"></iframe>
+  </div>
 </div>

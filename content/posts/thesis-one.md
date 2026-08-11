@@ -1,42 +1,22 @@
 ---
 aliases: ["/posts/thesis_one/"]
-title: "Thesis"
+title: "Ph.D. thesis: laser-based mass spectrometry for space exploration"
 date: 2021-08-23T11:30:03+00:00
-# weight: 1
-# aliases: ["/first"]
-tags: ["Thesis", "PhD"]
+tags: ["thesis", "mass-spectrometry"]
 author: "Rustam A. Lukmanov"
-# author: ["Me", "You"] # multiple authors
+description: "Characterization of bio-organic and inorganic chemistries using laser-based mass spectrometry — University of Bern, 2021."
 showToc: false
-TocOpen: false
-draft: false
-hidemeta: false
-comments: false
-description: "My PhD thesis on characterization of compounds using laser-based mass-spectrometry"
-disableHLJS: false # to disable highlightjs
-disableShare: false
-hideSummary: false
-searchHidden: false
 ShowReadingTime: true
-ShowPostNavLinks: true
 cover:
-    image: /images/Frontiers/thesis2.webp # image path/url
-    alt: "Correlation graph from measured inclusions" # alt text
-    caption: "Correlation graph from measured inclusions" # display caption under cover
-    relative: true # when using page bundles set this to true
-    hidden: true # only hide on current single page
-
+  image: /images/Frontiers/thesis2.webp
+  alt: "Structural organization of chemical signals measured from quartz"
+  hidden: true
 ---
 
-<div class="wrapper" style="display: flex; justify-content: left; align-items: center;">
-    <img src="/images/Frontiers/thesis2.webp" alt="Thesis cover" width="700" style="padding: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
-</div>
-  
-This image describes a structural organization of chemical signals measured from quartz (SiO<sub>2</sub>) mineral.
+{{< figure src="/images/Frontiers/thesis2.webp" alt="Structural organization of chemical signals measured from quartz" caption="Structural organization of chemical signals measured from quartz (SiO<sub>2</sub>)." >}}
 
-### [PDF](https://boristheses.unibe.ch/3993/)
+### [Full text](https://boristheses.unibe.ch/3993/)
 
 ### TL;DR
 
-The thesis describes ways of improving signal quality of the novel, highly miniature mass-spectrometer designed and developed for operations in space (e.g., Moon, Mars, Europa). The improvements include hardware modifications, implementation of various computational approaches for better signal recovery, and summarizes future development directions. The results section is presented with 7 peer-reviewed publications, covering different aspects of ion generation, signal processing and data exploration using graph-networks and ML (see [publications](/publications/) for a full list of published articles).
-
+The thesis develops ways of improving the signal quality of a miniature mass spectrometer designed for operations in space — on the Moon, Mars, or Europa. It covers hardware modifications, computational approaches to signal recovery, and directions for future development. The results are presented through seven peer-reviewed publications spanning ion generation, signal processing, and data exploration with graph networks and machine learning (see [publications](/publications/) for the full list).

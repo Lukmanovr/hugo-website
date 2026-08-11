@@ -1,40 +1,19 @@
 ---
 title: "Trends in and around AI"
 date: 2024-02-13T14:49:10+03:00
-# weight: 1
-# aliases: ["/first"]
-tags: ["Liga-forum", "AI"]
+tags: ["talks", "ai"]
 author: "Rustam A. Lukmanov"
-# author: ["Me", "You"] # multiple authors
+description: "My talk at LIGA-Forum 2024 in Kazan."
 showToc: false
-TocOpen: false
-draft: false
-hidemeta: false
-comments: false
-description: "My talk on LIGA-Forum 2024"
-disableHLJS: false # to disable highlightjs
-disableShare: false
-hideSummary: false
-searchHidden: false
 ShowReadingTime: true
-ShowPostNavLinks: true
-cover:
-    image: "" # image path/url
-    alt:  # alt text
-    caption:  # display caption under cover
-    relative: true # when using page bundles set this to true
-    hidden: true # only hide on current single page
-
 ---
 
-This week, I'll be addressing students at the LIGA-Forum (https://liga-forum.ru) 2024 in Kazan. Below you can find my presentation on "Trends in and around AI" from the forum.
+In February 2024 I spoke to students at [LIGA-Forum](https://liga-forum.ru) in Kazan about trends in and around AI. The slides from the talk are below.
 
-Full screen presentation -- [**web presentation**](https://liga-forum.netlify.app/)
+Open the slides full screen: [presentation](https://liga-forum.netlify.app/)
 
 <div class="wrapper">
-  <!-- The padding-bottom value is calculated by dividing the height by the width of the iframe and multiplying by 100 -->
-  <!-- For example, if the iframe is 800px by 600px, then the padding-bottom is 600 / 800 * 100 = 75% -->
   <div class="iframe-container" style="padding-bottom: 75%; position: relative; overflow: hidden;">
-    <iframe loading="lazy" src="https://liga-forum.netlify.app" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="Iframe Example"></iframe>
+    <iframe loading="lazy" src="https://liga-forum.netlify.app" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="Slides: Trends in and around AI"></iframe>
   </div>
 </div>
