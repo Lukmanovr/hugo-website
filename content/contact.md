@@ -12,6 +12,8 @@ Email is the fastest way to reach me: [mail@rustam-lukmanov.ru](mailto:mail@rust
 
 Elsewhere: [LinkedIn](https://www.linkedin.com/in/rustam-lukmanov-604695100/) · [Telegram](https://t.me/lukmanovr) · [Instagram](https://www.instagram.com/lukmanovr/)
 
+[Русская версия сайта](/ru/)
+
 ## Working together
 
 I supervise graduate research at the AI Institute and am open to collaborations in machine learning and its applications in the sciences. If you are a prospective student or collaborator, write a short note about the problem you want to work on.
