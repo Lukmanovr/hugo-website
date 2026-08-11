@@ -1,5 +1,14 @@
 # Refactor & Modernization Plan — rustam-lukmanov.com
 
+> **STATUS (2026-08-11): executed** on branch `main` (commit `5a8ea66`), except:
+> owner-gated items D1 (git history rewrite — pack still 161 MB), the push +
+> GitHub Pages settings switch (no `gh` auth on this machine — see 1.2), and the
+> Phase 5 CI quality gates (htmltest/Lighthouse workflows not yet added).
+> Deviations: footer shows upstream "Powered by Hugo & PaperMod" again (old fork
+> had removed it — re-override if the owner objects); PaperMod master emits two
+> `.Language.*` deprecation warnings (upstream issue, cosmetic); light theme is
+> enabled + toggle works but was not visually verified in a real light-mode browser.
+
 > **Audience:** autonomous agents working on this repo. Each task is self-contained with
 > context, exact file references, steps, and acceptance criteria. Work phases in order —
 > tasks inside a phase are parallelizable unless marked `depends:`.
