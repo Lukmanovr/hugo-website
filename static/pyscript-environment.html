@@ -9,17 +9,22 @@
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.3/core.css">
   <script type="module" src="https://pyscript.net/releases/2025.7.3/core.js"></script>
   <style>
+    /* light document: PyScript's CodeMirror editor ships a light theme,
+       so the page around it is warm paper for coherent, readable colors */
     body {
       margin: 0;
       padding: 16px;
-      background: #16140f;
-      color: #ececea;
+      background: #faf9f6;
+      color: #26251e;
       font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
       font-size: 15px;
     }
     p.hint {
       margin: 0 0 12px;
-      color: rgb(236 236 234 / 0.55);
+      color: rgb(38 37 30 / 0.6);
+    }
+    .py-editor-box, mpy-editor, py-editor {
+      background: #ffffff;
     }
   </style>
 </head>

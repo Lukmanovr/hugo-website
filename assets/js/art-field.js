@@ -44,10 +44,12 @@
   var SCALE = 190; // noise field zoom
   var t = 0;
 
-  // palettes follow the site theme; the toggle flips html[data-theme]
+  // palettes follow the site theme; the toggle flips html[data-theme].
+  // "trail" is the translucent fade-fill that lets moving strokes leave
+  // a short ghost behind them instead of being hard-cleared every frame.
   var PALETTES = {
-    dark: { bg: '#16140f', stroke: '209, 73, 47' },
-    light: { bg: '#f2f0eb', stroke: '176, 52, 30' },
+    dark: { bg: '#16140f', trail: 'rgba(22, 20, 15, 0.16)', stroke: '209, 73, 47' },
+    light: { bg: '#f2f0eb', trail: 'rgba(242, 240, 235, 0.16)', stroke: '176, 52, 30' },
   };
 
   function currentPalette() {
@@ -58,9 +60,9 @@
     return PALETTES[mode];
   }
 
-  function draw() {
+  function draw(fade) {
     var pal = currentPalette();
-    ctx.fillStyle = pal.bg;
+    ctx.fillStyle = fade ? pal.trail : pal.bg;
     ctx.fillRect(0, 0, W, H);
     ctx.lineWidth = 1.3;
     ctx.lineCap = 'round';
@@ -87,7 +89,7 @@
     if (!running) return;
     if (now - last > 40) { // ~25 fps is plenty for this drift
       t += 0.0016;
-      draw();
+      draw(true); // fade-fill: strokes leave a short trail
       last = now;
     }
     requestAnimationFrame(frame);
