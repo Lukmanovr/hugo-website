@@ -1,6 +1,6 @@
 // Homepage art panel: a drifting vector flow field on vanilla canvas.
-// Curved streamline strokes with depth-based weight and colour, short motion
-// trails, and a gentle swirl around the cursor. Loaded lazily by
+// Straight needle strokes oriented by a slowly evolving noise field, with a
+// gentle swirl around the cursor. Loaded lazily by
 // home_info.html after idle; reduced-motion visitors keep the static CSS
 // gradient. Palettes follow the site theme (html[data-theme]).
 (function () {
@@ -41,9 +41,8 @@
     return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
   }
 
-  var GRID = 22;    // px between streamline seeds
-  var SCALE = 190;  // noise field zoom
-  var STEPS = 3;    // segments per streamline (curved strokes)
+  var GRID = 22;    // px between strokes
+  var SCALE = 260;  // noise field zoom (broad, calm currents)
   var t = 0;
 
   // deep/base are the two stops of the stroke colour grade
@@ -93,7 +92,7 @@
     var pal = currentPalette();
     ctx.fillStyle = pal.bg;
     ctx.fillRect(0, 0, W, H);
-    ctx.lineCap = 'round';
+    ctx.lineCap = 'butt'; // flat ends: needle, not hair
 
     for (var gy = GRID / 2; gy < H; gy += GRID) {
       for (var gx = GRID / 2; gx < W; gx += GRID) {
@@ -103,30 +102,27 @@
         var y = gy + (jy - 0.5) * GRID * 0.8;
 
         var depth = noise(x / SCALE + 40, y / SCALE + 40);
-        var seg = (5 + depth * 5) * 2 / STEPS;
+        var half = 4 + depth * 3.5;
 
         var col = mix(pal.deep, pal.base, depth);
         var alpha = 0.4 + depth * 0.35;
         ctx.strokeStyle = 'rgba(' + col[0] + ', ' + col[1] + ', ' + col[2] + ', ' + alpha.toFixed(3) + ')';
         ctx.lineWidth = 1 + depth * 0.4;
 
-        // walk a short streamline along the field: curved, not a straight tick
-        ctx.beginPath();
-        var px = x, py = y;
-        ctx.moveTo(px, py);
-        for (var s = 0; s < STEPS; s++) {
-          var angle = noise(px / SCALE + t, py / SCALE - t * 0.6) * Math.PI * 4;
-          if (mx !== null) {
-            var dx0 = px - mx, dy0 = py - my;
-            var dist = Math.sqrt(dx0 * dx0 + dy0 * dy0);
-            if (dist < SWIRL_R) {
-              angle += (1 - dist / SWIRL_R) * 1.3;
-            }
+        // one straight needle per seed, oriented by the field
+        var angle = noise(x / SCALE + t, y / SCALE - t * 0.6) * Math.PI * 4;
+        if (mx !== null) {
+          var dx0 = x - mx, dy0 = y - my;
+          var dist = Math.sqrt(dx0 * dx0 + dy0 * dy0);
+          if (dist < SWIRL_R) {
+            angle += (1 - dist / SWIRL_R) * 1.1;
           }
-          px += Math.cos(angle) * seg;
-          py += Math.sin(angle) * seg;
-          ctx.lineTo(px, py);
         }
+        var dx = Math.cos(angle) * half;
+        var dy = Math.sin(angle) * half;
+        ctx.beginPath();
+        ctx.moveTo(x - dx, y - dy);
+        ctx.lineTo(x + dx, y + dy);
         ctx.stroke();
       }
     }
