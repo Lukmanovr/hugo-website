@@ -8,10 +8,9 @@ description: "A talk on laser ionization mass spectrometry, graph data processin
 showToc: false
 ShowReadingTime: true
 cover:
-  image: "images/innopolis_university.webp"
+  image: /images/innopolis_university.webp
   alt: "Innopolis University campus"
-  relative: true
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/innopolis_university.webp" alt="Innopolis University campus" >}}

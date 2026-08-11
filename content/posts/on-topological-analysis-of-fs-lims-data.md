@@ -9,7 +9,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/On_topological.webp
   alt: "Subsampled spectral similarity networks"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/On_topological.webp" alt="Subsampled spectral similarity networks" caption="A randomly selected 70% subset of spectral similarity networks, used to estimate the robustness of the covering algorithm. A Rand index of 92% shows the network segregates confidently into two communities." >}}

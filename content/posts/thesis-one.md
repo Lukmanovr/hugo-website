@@ -10,7 +10,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/thesis2.webp
   alt: "Structural organization of chemical signals measured from quartz"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/thesis2.webp" alt="Structural organization of chemical signals measured from quartz" caption="Structural organization of chemical signals measured from quartz (SiO<sub>2</sub>)." >}}

@@ -9,7 +9,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/lims.webp
   alt: "Schematic of multi-wavelength ion generation and mass separation in the fs-LIMS instrument"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/lims.webp" alt="Schematic of multi-wavelength ion generation and mass separation in the fs-LIMS instrument" caption="Simplified schematic of multi-wavelength ion generation and mass separation in the fs-LIMS instrument." >}}

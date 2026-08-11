@@ -9,7 +9,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/image26.webp
   alt: "Weighted mass-correlation network of a two-entity inclusion"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/chemometrics.webp" alt="Weighted mass-correlation network of a two-entity inclusion" caption="Ion yields from a two-entity inclusion, extracted from the chemical depth profile. Colour groupings identify elements with high affinity — CH-rich kerogen and the silicate chert; the loosely connected molecular ions at the periphery are plasma-chemistry byproducts formed on the way to the detector." >}}

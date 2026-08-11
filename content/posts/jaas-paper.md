@@ -10,7 +10,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/Jaas_cover.webp
   alt: "Cover of the Journal of Analytical Atomic Spectrometry"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/Jaas_cover.webp" alt="Cover of the Journal of Analytical Atomic Spectrometry" caption="Our work featured on the cover of the Journal of Analytical Atomic Spectrometry." >}}

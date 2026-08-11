@@ -30,7 +30,7 @@ target = 6
 twoSum(nums, target)
 ```
 
-Now run it right here in the browser: paste the code into the interactive REPL below and press the run button.
+Or run it right here in the browser — the editor below is preloaded with the same code; press the run button in its corner. The first run downloads the Python runtime, so give it a few seconds.
 
 <div class="wrapper">
   <div class="iframe-container" style="padding-bottom: 100%; position: relative; overflow: hidden;">

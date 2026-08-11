@@ -10,7 +10,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/origin.webp
   alt: "Figure from the ORIGIN paper"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/origin.webp" alt="Figure from the ORIGIN paper: detected amino-acid signals" >}}

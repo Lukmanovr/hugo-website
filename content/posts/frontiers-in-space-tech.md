@@ -9,7 +9,7 @@ ShowReadingTime: true
 cover:
   image: /images/Frontiers/Eigenvector_centrality_40K_mapper-FA2.webp
   alt: "Spectral proximity network coloured by eigenvector centrality"
-  hidden: true
+  hiddenInSingle: true
 ---
 
 {{< figure src="/images/Frontiers/Averaged_image_degree1.webp" alt="Spectral proximity network coloured by node degree" caption="Spectral proximity network of the partially averaged mass-spectrometric image (40,000 mass spectra, 260 unit masses), coloured by node degree — the number of edges connected to each node." >}}

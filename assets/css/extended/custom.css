@@ -163,23 +163,23 @@ h1[id], h2[id], h3[id], h4[id] {
     font-weight: 500;
 }
 
-/* "RL" monogram mark */
+/* flow-field SVG mark (see label.iconSVG in hugo.yaml) */
 .logo a {
     display: inline-flex;
     align-items: center;
     align-self: center;
     line-height: 1;
-    font-weight: 650;
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    border: 1px solid var(--border);
-    border-radius: var(--r-xs);
-    padding: 7px 9px;
-    transition: border-color 0.15s ease;
+    opacity: 0.9;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .logo a:hover {
-    border-color: var(--secondary);
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.logo a svg {
+    display: block;
 }
 
 /* ---- Homepage: intro band + contained art panel -------------------------- */
