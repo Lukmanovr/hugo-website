@@ -1,7 +1,7 @@
 ---
 title: "Trends in and around AI"
 date: 2024-02-13T14:49:10+03:00
-tags: ["talks", "ai"]
+tags: ["talks", "AI"]
 author: "Rustam A. Lukmanov"
 description: "My talk at LIGA-Forum 2024 in Kazan."
 showToc: false

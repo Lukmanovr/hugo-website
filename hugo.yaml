@@ -40,7 +40,7 @@ params:
   env: production # enables opengraph, twitter-cards and schema
   title: Rustam Lukmanov
   description: "Rustam Lukmanov — Associate Professor and Deputy Director of the AI Institute at Innopolis University. Machine learning for graph-structured data; Ph.D. in physics, University of Bern."
-  keywords: [Blog, Portfolio, Rustam Lukmanov]
+  keywords: [Rustam Lukmanov, AI, machine learning, graph data, Innopolis University, mass spectrometry]
   author: Lukmanov R.A.
   images: ["/Profile.webp"]
   DateFormat: "January 2, 2006"
@@ -62,11 +62,11 @@ params:
 
   assets:
     theme_color: "#16140f"
-    favicon: "/circle4.webp"
-    favicon16x16: "/circle4.webp"
-    favicon32x32: "/circle4.webp"
-    apple_touch_icon: "/circle4.webp"
-    safari_pinned_tab: "/circle4.webp"
+    favicon: "/favicon.svg"
+    favicon16x16: "/favicon.svg"
+    favicon32x32: "/favicon.svg"
+    apple_touch_icon: "/apple-touch-icon.png"
+    safari_pinned_tab: "/favicon.svg"
 
   label:
     text: " "

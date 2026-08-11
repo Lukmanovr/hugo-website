@@ -526,8 +526,10 @@ h1[id], h2[id], h3[id], h4[id] {
     font-family: var(--font-sans);
 }
 
-#searchbox input:focus {
-    border-color: var(--secondary);
+#searchbox input:focus,
+#searchbox input:focus-visible {
+    outline: none;
+    border-color: var(--accent);
 }
 
 #searchResults li {

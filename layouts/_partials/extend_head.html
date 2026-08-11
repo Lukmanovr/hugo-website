@@ -2,6 +2,9 @@
      - GA4 (production only, async) — the single analytics stack
      - Speculation Rules: prerender same-origin pages for instant navigation
      - Cross-document View Transitions are enabled in assets/css/extended/custom.css */ -}}
+<link rel="preload" href="/fonts/GeistVF.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f6">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16140f">
 {{- if hugo.IsProduction }}
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EMDQYRZC3"></script>
