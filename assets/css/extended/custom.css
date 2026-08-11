@@ -26,7 +26,7 @@
 
 /* ---- Tokens -------------------------------------------------------------- */
 
-:root {
+html:root {
     --font-sans: "Geist", "Geist Fallback", system-ui, "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
@@ -39,7 +39,10 @@
     --gap: 24px;
     --main-width: 820px;
 
-    /* light: warm paper */
+    /* light: warm paper (base; PaperMod's pre-paint script resolves the
+       html data-theme attribute to "dark" or "light" before first paint,
+       so the [data-theme] blocks below are the operative ones — they must
+       out-specify the theme's own :root[data-theme] rules, hence html:root) */
     --theme: #faf9f6;
     --entry: #f2f0eb;
     --hover: #f0eee8;
@@ -49,10 +52,26 @@
     --content: #33312a;
     --border: #e4e0d7;
     --code-bg: #f2f0eb;
+    --code-block-bg: #f2f0eb;
     --hljs-bg: #f2f0eb;
 }
 
-[data-theme="dark"] {
+html:root[data-theme="light"] {
+    --theme: #faf9f6;
+    --entry: #f2f0eb;
+    --hover: #f0eee8;
+    --primary: #26251e;
+    --secondary: rgb(38 37 30 / 0.58);
+    --tertiary: #eae7e0;
+    --content: #33312a;
+    --border: #e4e0d7;
+    --code-bg: #f2f0eb;
+    --code-block-bg: #f2f0eb;
+    --hljs-bg: #f2f0eb;
+    color-scheme: light;
+}
+
+html:root[data-theme="dark"] {
     /* dark: deep warm black */
     --theme: #0f0e0b;
     --entry: #16140f;
@@ -63,11 +82,14 @@
     --content: #d6d4d1;
     --border: #262218;
     --code-bg: #16140f;
+    --code-block-bg: #16140f;
     --hljs-bg: #16140f;
+    color-scheme: dark;
 }
 
+/* no-JS fallback: attribute stays "auto", follow the OS */
 @media (prefers-color-scheme: dark) {
-    [data-theme="auto"] {
+    html:root[data-theme="auto"] {
         --theme: #0f0e0b;
         --entry: #16140f;
         --hover: #1c1913;
@@ -77,7 +99,9 @@
         --content: #d6d4d1;
         --border: #262218;
         --code-bg: #16140f;
+        --code-block-bg: #16140f;
         --hljs-bg: #16140f;
+        color-scheme: dark;
     }
 }
 
