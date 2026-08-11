@@ -1,7 +1,9 @@
 {{- /* Site customizations on top of PaperMod's head:
-     - GA4 (production only, async) — the single analytics stack
+     - Analytics (production only): GA4 + Yandex Metrika, both async/deferred
+     - yandex-verification keeps the site verified in Yandex Webmaster
      - Speculation Rules: prerender same-origin pages for instant navigation
      - Cross-document View Transitions are enabled in assets/css/extended/custom.css */ -}}
+<meta name="yandex-verification" content="5ed6e071bdf60a62">
 <link rel="preload" href="/fonts/GeistVF.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f6">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16140f">
@@ -14,6 +16,23 @@
     gtag('js', new Date());
     gtag('config', 'G-3EMDQYRZC3');
 </script>
+<script>
+    // Yandex Metrika, loaded after window load so it never competes with rendering
+    window.addEventListener('load', function () {
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0];
+            k.async = 1; k.src = r; a.parentNode.insertBefore(k, a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(88826046, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/88826046" style="position:absolute;left:-9999px" alt=""></div></noscript>
 {{- end }}
 <script type="speculationrules">
 {
