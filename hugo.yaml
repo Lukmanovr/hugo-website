@@ -39,7 +39,7 @@ minify:
 params:
   env: production # enables opengraph, twitter-cards and schema
   title: Rustam Lukmanov
-  description: "Rustam Lukmanov — Associate Professor and Deputy Director of the AI Institute at Innopolis University. Machine learning for graph-structured data; Ph.D. in physics, University of Bern."
+  description: "Rustam Lukmanov — Associate Professor and Deputy Director of the Data Science and AI Institute at Innopolis University. Machine learning for graph-structured data; Ph.D. in physics, University of Bern."
   keywords: [Rustam Lukmanov, AI, machine learning, graph data, Innopolis University, mass spectrometry]
   author: Lukmanov R.A.
   images: ["/Profile.webp"]
@@ -79,7 +79,7 @@ params:
     Content: |
       I work on artificial intelligence — teaching machines to make sense of complex, interconnected data on their own.
 
-      I am an Associate Professor and Deputy Director of the AI Institute at Innopolis University. My research develops scalable, principled machine-learning methods for the unsupervised analysis of graph-structured data — finding patterns in the kind of data where things are defined by their connections.
+      I am an Associate Professor and Deputy Director of the Data Science and AI Institute at Innopolis University. My research develops scalable, principled machine-learning methods for the unsupervised analysis of graph-structured data — finding patterns in the kind of data where things are defined by their connections.
 
       Before that: a Ph.D. in experimental physics from the University of Bern, advised by Prof. Peter Wurz, and an M.Sc. and B.Sc. from Saint Petersburg State University.
 

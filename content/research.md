@@ -19,7 +19,7 @@ Instruments first, then the mathematics to make sense of what they measure. Duri
 
 #### Efficient deep learning and recursive reasoning
 
-At the AI Institute my group studies how to make modern models practical — and how small models can reason beyond their size: quantization of vision transformers for CPU inference, layer-wise analysis of frozen encoders for transfer learning, tensor decompositions for learning from incomplete data, and tiny recursive models that outperform much larger transformers on spatial reasoning. Representative work: [depth vs recursion](/posts/depth-vs-recursion/) (ICLR 2026 RSI workshop), [ViT quantization](https://doi.org/10.3103/S0005105526700196), [layer-wise encoder analysis](https://doi.org/10.3103/S0005105525701419), [smooth tensor completion](https://doi.org/10.1109/ACCESS.2025.3625862).
+At the Data Science and AI Institute my group studies how to make modern models practical — and how small models can reason beyond their size: quantization of vision transformers for CPU inference, layer-wise analysis of frozen encoders for transfer learning, tensor decompositions for learning from incomplete data, and tiny recursive models that outperform much larger transformers on spatial reasoning. Representative work: [depth vs recursion](/posts/depth-vs-recursion/) (ICLR 2026 RSI workshop), [ViT quantization](https://doi.org/10.3103/S0005105526700196), [layer-wise encoder analysis](https://doi.org/10.3103/S0005105525701419), [smooth tensor completion](https://doi.org/10.1109/ACCESS.2025.3625862).
 
 ---
 

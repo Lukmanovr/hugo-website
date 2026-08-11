@@ -8,7 +8,7 @@ showToc: false
 ShowReadingTime: true
 ---
 
-A short paper written with my students at the AI Institute, presented at the [ICLR 2026 Workshop on AI with Recursive Self-Improvement](https://recursive-workshop.github.io/) in Rio de Janeiro.
+A short paper written with my students at the Data Science and AI Institute, presented at the [ICLR 2026 Workshop on AI with Recursive Self-Improvement](https://recursive-workshop.github.io/) in Rio de Janeiro.
 
 The question is simple to state: when a model needs to reason, is it better to stack more layers, or to think longer with the layers it has? We compare Tiny Recursive Models (TRM) — which refine a latent "thought" vector over repeated passes — against standard encoder-only transformers on jigsaw puzzle reconstruction, a task that demands global spatial reasoning.
 

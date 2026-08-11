@@ -15,7 +15,7 @@ cover:
 
 #### About
 
-Associate Professor and Deputy Director of the AI Institute at Innopolis University, working on machine learning for graph-structured data.
+Associate Professor and Deputy Director of the Data Science and AI Institute at Innopolis University, working on machine learning for graph-structured data.
 
 Trained as a physicist and geophysicist. Before Innopolis: doctoral and postdoctoral research at the University of Bern, applying unsupervised learning to laser mass spectrometry developed for planetary exploration.
 
@@ -29,7 +29,7 @@ In Russian, my name reads as Рустам Лукманов.
 
 #### Appointments
 
-- 2023–present — **Associate Professor & Deputy Director**, AI Institute, Innopolis University.
+- 2023–present — **Associate Professor & Deputy Director**, Data Science and AI Institute, Innopolis University.
   Research on graph machine learning and unsupervised methods; responsible for the institute's research agenda and scientific operations.
 
 - 2021–2022 — **Postdoctoral Researcher**, Space Research and Planetary Sciences, University of Bern.
