@@ -1,6 +1,8 @@
-// Homepage art panel: a slowly drifting vector flow field drawn on vanilla
-// canvas (no libraries). Loaded lazily by home_info.html after idle; skipped
-// entirely under prefers-reduced-motion (static gradient fallback remains).
+// Homepage art panel: a drifting vector flow field on vanilla canvas.
+// Curved streamline strokes with depth-based weight and colour, short motion
+// trails, and a gentle swirl around the cursor. Loaded lazily by
+// home_info.html after idle; reduced-motion visitors keep the static CSS
+// gradient. Palettes follow the site theme (html[data-theme]).
 (function () {
   var el = document.getElementById('art-panel');
   if (!el) return;
@@ -39,17 +41,33 @@
     return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
   }
 
-  var GRID = 21;   // px between strokes
-  var LEN = 8;     // stroke half-length
-  var SCALE = 190; // noise field zoom
+  var GRID = 22;    // px between streamline seeds
+  var SCALE = 190;  // noise field zoom
+  var STEPS = 3;    // segments per streamline (curved strokes)
   var t = 0;
 
-  // palettes follow the site theme; the toggle flips html[data-theme].
-  // "trail" is the translucent fade-fill that lets moving strokes leave
-  // a short ghost behind them instead of being hard-cleared every frame.
+  // "trail" is the translucent fade-fill that lets moving strokes leave a
+  // short ghost; deep/base/bright are the depth-graded stroke colours and
+  // spark is the rare highlight.
   var PALETTES = {
-    dark: { bg: '#16140f', trail: 'rgba(22, 20, 15, 0.16)', stroke: '209, 73, 47' },
-    light: { bg: '#f2f0eb', trail: 'rgba(242, 240, 235, 0.16)', stroke: '176, 52, 30' },
+    dark: {
+      bg: '#16140f',
+      trail: 'rgba(22, 20, 15, 0.16)',
+      deep: [150, 45, 32],
+      base: [209, 73, 47],
+      bright: [238, 112, 72],
+      spark: 'rgba(242, 186, 148, 0.9)',
+      vignette: 'rgba(10, 9, 6, 0.55)',
+    },
+    light: {
+      bg: '#f2f0eb',
+      trail: 'rgba(242, 240, 235, 0.16)',
+      deep: [128, 38, 24],
+      base: [176, 52, 30],
+      bright: [214, 96, 60],
+      spark: 'rgba(94, 28, 16, 0.9)',
+      vignette: 'rgba(70, 62, 48, 0.14)',
+    },
   };
 
   function currentPalette() {
@@ -60,26 +78,83 @@
     return PALETTES[mode];
   }
 
-  function draw(fade) {
+  function mix(a, b, k) {
+    return [
+      Math.round(a[0] + (b[0] - a[0]) * k),
+      Math.round(a[1] + (b[1] - a[1]) * k),
+      Math.round(a[2] + (b[2] - a[2]) * k),
+    ];
+  }
+
+  // gentle swirl around the cursor
+  var mx = null, my = null;
+  el.addEventListener('mousemove', function (e) {
+    var r = el.getBoundingClientRect();
+    mx = e.clientX - r.left;
+    my = e.clientY - r.top;
+  });
+  el.addEventListener('mouseleave', function () {
+    mx = null;
+    my = null;
+  });
+  var SWIRL_R = 140;
+
+  function draw(fadeFill) {
     var pal = currentPalette();
-    ctx.fillStyle = fade ? pal.trail : pal.bg;
+    ctx.fillStyle = fadeFill ? pal.trail : pal.bg;
     ctx.fillRect(0, 0, W, H);
-    ctx.lineWidth = 1.3;
     ctx.lineCap = 'round';
-    for (var y = GRID / 2; y < H; y += GRID) {
-      for (var x = GRID / 2; x < W; x += GRID) {
-        var n = noise(x / SCALE + t, y / SCALE - t * 0.6);
-        var angle = n * Math.PI * 4;
+
+    for (var gy = GRID / 2; gy < H; gy += GRID) {
+      for (var gx = GRID / 2; gx < W; gx += GRID) {
+        // deterministic jitter breaks the grid regularity
+        var jx = hash(gx, gy), jy = hash(gy, gx);
+        var x = gx + (jx - 0.5) * GRID * 0.8;
+        var y = gy + (jy - 0.5) * GRID * 0.8;
+
         var depth = noise(x / SCALE + 40, y / SCALE + 40);
-        var dx = Math.cos(angle) * LEN;
-        var dy = Math.sin(angle) * LEN;
-        ctx.strokeStyle = 'rgba(' + pal.stroke + ', ' + (0.3 + depth * 0.55).toFixed(3) + ')';
+        var seg = (4 + depth * 9) * 2 / STEPS;
+
+        // rare bright sparks give the field focal points
+        var isSpark = jx > 0.985;
+        var col = mix(pal.deep, depth < 0.55 ? pal.base : pal.bright,
+          Math.min(1, depth * 1.4));
+        var alpha = 0.22 + depth * 0.6;
+        ctx.strokeStyle = isSpark
+          ? pal.spark
+          : 'rgba(' + col[0] + ', ' + col[1] + ', ' + col[2] + ', ' + alpha.toFixed(3) + ')';
+        ctx.lineWidth = 0.9 + depth * 0.9;
+
+        // walk a short streamline along the field: curved, not a straight tick
         ctx.beginPath();
-        ctx.moveTo(x - dx, y - dy);
-        ctx.lineTo(x + dx, y + dy);
+        var px = x, py = y;
+        ctx.moveTo(px, py);
+        for (var s = 0; s < STEPS; s++) {
+          var angle = noise(px / SCALE + t, py / SCALE - t * 0.6) * Math.PI * 4;
+          if (mx !== null) {
+            var dx0 = px - mx, dy0 = py - my;
+            var dist = Math.sqrt(dx0 * dx0 + dy0 * dy0);
+            if (dist < SWIRL_R) {
+              angle += (1 - dist / SWIRL_R) * 1.3;
+            }
+          }
+          px += Math.cos(angle) * seg;
+          py += Math.sin(angle) * seg;
+          ctx.lineTo(px, py);
+        }
         ctx.stroke();
       }
     }
+
+    // soft vignette settles the composition inside the card
+    var vg = ctx.createRadialGradient(
+      W / 2, H / 2, Math.min(W, H) * 0.45,
+      W / 2, H / 2, Math.max(W, H) * 0.72
+    );
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, pal.vignette);
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, W, H);
   }
 
   var running = false;
@@ -111,8 +186,10 @@
     draw();
   });
 
-  // repaint immediately when the theme toggle flips html[data-theme]
-  new MutationObserver(draw).observe(document.documentElement, {
+  // repaint opaquely the moment the theme toggle flips html[data-theme]
+  new MutationObserver(function () {
+    draw();
+  }).observe(document.documentElement, {
     attributes: true,
     attributeFilter: ['data-theme'],
   });
