@@ -142,7 +142,7 @@ h1[id], h2[id], h3[id], h4[id] {
     background: color-mix(in oklab, var(--accent) 30%, transparent);
 }
 
-/* ---- Header: flat, framed ------------------------------------------------ */
+/* ---- Header: flat, framed, always one line ------------------------------- */
 
 .header {
     position: sticky;
@@ -150,6 +150,34 @@ h1[id], h2[id], h3[id], h4[id] {
     z-index: 1000;
     background: var(--theme);
     border-bottom: 1px solid var(--border);
+}
+
+.header-nav {
+    flex-wrap: nowrap;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+#menu {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#menu::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    #menu span {
+        font-size: 0.88rem;
+    }
+
+    #menu li + li {
+        margin-inline-start: 2px;
+    }
 }
 
 #menu span {
@@ -249,6 +277,9 @@ h1[id], h2[id], h3[id], h4[id] {
 
 .post-rows {
     margin-top: calc(var(--gap) / 2);
+    /* rows bleed slightly past the text column so the hover/tap shading
+       does not hug the first character */
+    margin-inline: -14px;
 }
 
 .post-row {
@@ -257,8 +288,9 @@ h1[id], h2[id], h3[id], h4[id] {
     grid-template-columns: 128px 1fr;
     gap: 18px;
     align-items: baseline;
-    padding: 17px 6px;
+    padding: 17px 14px;
     border-bottom: 1px solid var(--border);
+    border-radius: var(--r-xs);
     transition: background 0.12s ease;
 }
 
