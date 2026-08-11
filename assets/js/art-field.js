@@ -46,19 +46,15 @@
   var STEPS = 3;    // segments per streamline (curved strokes)
   var t = 0;
 
-  // "trail" is the translucent fade-fill that lets moving strokes leave a
-  // short ghost; deep/base/bright are the depth-graded stroke colours and
-  // spark is the rare highlight.
+  // deep/base are the two stops of the stroke colour grade
   var PALETTES = {
     dark: {
       bg: '#16140f',
-      trail: 'rgba(22, 20, 15, 0.16)',
       deep: [163, 52, 35],
       base: [209, 73, 47],
     },
     light: {
       bg: '#f2f0eb',
-      trail: 'rgba(242, 240, 235, 0.16)',
       deep: [140, 42, 26],
       base: [176, 52, 30],
     },
@@ -93,9 +89,9 @@
   });
   var SWIRL_R = 140;
 
-  function draw(fadeFill) {
+  function draw() {
     var pal = currentPalette();
-    ctx.fillStyle = fadeFill ? pal.trail : pal.bg;
+    ctx.fillStyle = pal.bg;
     ctx.fillRect(0, 0, W, H);
     ctx.lineCap = 'round';
 
@@ -143,7 +139,7 @@
     if (!running) return;
     if (now - last > 40) { // ~25 fps is plenty for this drift
       t += 0.0016;
-      draw(true); // fade-fill: strokes leave a short trail
+      draw();
       last = now;
     }
     requestAnimationFrame(frame);
