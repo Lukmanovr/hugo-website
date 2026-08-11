@@ -28,11 +28,11 @@ cover:
 ---
 
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">
-    <img src="/images/Frontiers/chemometrics.webp" width="700" style="padding: 5px; border-radius: 10px; drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));">
+    <img src="/images/Frontiers/chemometrics.webp" width="700" style="padding: 5px; drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));">
 </div>
 Ion yields measured from the two-entity inclusion extracted from the chemical depth profile. Color groupings identifies elements with high affinity (i.e., CH-rich kerogen and silicate chert. Molecular ions loosely connected on the sides identifies the plasma chemistry byproducts originated on the way to the detector. Second image - decision borderlines on PCA reduced spectra.  
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">
-    <img src="/images/Frontiers/pca_cube.webp" width="700" style="padding: 5px; border-radius: 10px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
+    <img src="/images/Frontiers/pca_cube.webp" width="700" style="padding: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
 </div>
 
 ### [Paper](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/full/10.1002/cem.3370) / [PDF](/PDF/Chemometrics_Lukmanov.pdf)

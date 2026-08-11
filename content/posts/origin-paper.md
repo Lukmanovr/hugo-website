@@ -29,7 +29,7 @@ cover:
 ---
 
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">
-    <img src="/images/Frontiers/origin.webp" width="700" style="padding: 5px; border-radius: 10px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
+    <img src="/images/Frontiers/origin.webp" width="700" style="padding: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
 </div>
   
 In this paper we show that with our new mass spectrometry system we can detect very low abundances of organic molecules. To be precise - in the femtomole/mm<sup>-2</sup> range - which is a billionth of a millionth (10<sup>-15</sup>) of a mole (however, it's still quite a lot of molecules!)

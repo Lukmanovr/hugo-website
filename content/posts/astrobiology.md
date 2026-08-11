@@ -28,7 +28,7 @@ cover:
 ---
 
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">
-    <img src="/images/Frontiers/lims.webp" alt="Astroniology" width="700" style="padding: 5px; border-radius: 10px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
+    <img src="/images/Frontiers/lims.webp" alt="Astroniology" width="700" style="padding: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
 </div>
 Simplified schematics of the multi-color ion generation and mass separation using fs-LIMS instrument.
 

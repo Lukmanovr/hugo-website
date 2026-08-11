@@ -28,7 +28,7 @@ cover:
 ---
 
 <div class="wrapper" style="display: flex; justify-content: left; align-items: center;">
-    <img src="/images/Frontiers/Averaged_image_degree1.webp" alt="Frontiers paper" width="700" style="padding: 5px; border-radius: 10px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
+    <img src="/images/Frontiers/Averaged_image_degree1.webp" alt="Frontiers paper" width="700" style="padding: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.45);">
 </div>
   
 Spectral proximity network of the partially averaged mass spectrometric image (40′000 mass spectra 260 single unit masses). The networks are colored according to the node degree (the degree of a node is the number of edges connected to the node).

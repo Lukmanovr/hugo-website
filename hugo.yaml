@@ -61,7 +61,7 @@ params:
   tocopen: false
 
   assets:
-    theme_color: "#14120e"
+    theme_color: "#0f0e0b"
     favicon: "/circle4.webp"
     favicon16x16: "/circle4.webp"
     favicon32x32: "/circle4.webp"
@@ -69,9 +69,7 @@ params:
     safari_pinned_tab: "/circle4.webp"
 
   label:
-    text: "Rustam Lukmanov"
-    icon: /logo_italic7.png
-    iconHeight: 35
+    text: "RL"
 
 # home_info mode drives the homepage (profileMode stays off — the Vanta
   # background and hero live in the home_info partial override)

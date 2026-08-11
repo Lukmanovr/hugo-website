@@ -24,14 +24,17 @@
 - Content filenames are kebab-case ASCII. Renaming a published page requires
   `aliases:` front matter with the old URL.
 - Motion features must respect `prefers-reduced-motion` (see the guard at the bottom of
-  `custom.css`; the Vanta loader in `home_info.html` checks it before loading anything).
+  `custom.css`; the art-panel loader in `home_info.html` checks it before loading anything).
 
 ## Homepage architecture
 
-`layouts/_partials/home_info.html` renders a glass hero card over a fixed
-`#vanta-background` div. p5 + vanta.trunk + `assets/js/vanta-init.js` are injected
-after `requestIdleCallback`; the div's CSS gradient is the no-JS/reduced-motion fallback.
-Effect tuning (color `0xff3000`, chaos, spacing) lives in `vanta-init.js`.
+`layouts/_partials/home_info.html` renders an editorial intro followed by a bordered
+`#art-panel` card. `assets/js/art-field.js` (vanilla canvas, zero dependencies) draws a
+slowly drifting red flow field inside it, injected after `requestIdleCallback`; the
+panel's CSS gradient is the no-JS/reduced-motion fallback. It animates only while
+on-screen (IntersectionObserver) at ~25 fps. Tuning (GRID/LEN/SCALE, stroke color)
+lives at the top of `art-field.js`. The nav mark is a text "RL" monogram
+(`label.text` in hugo.yaml + `.logo a` styles) — no logo image files.
 
 ## Design system (see DESIGN_PLAN.md for rationale)
 

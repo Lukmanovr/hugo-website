@@ -53,31 +53,31 @@
 }
 
 [data-theme="dark"] {
-    /* dark: warm near-black */
-    --theme: #14120e;
-    --entry: #1b1814;
-    --hover: #211d18;
+    /* dark: deep warm black */
+    --theme: #0f0e0b;
+    --entry: #16140f;
+    --hover: #1c1913;
     --primary: #ececea;
-    --secondary: rgb(236 236 234 / 0.52);
-    --tertiary: #211d18;
+    --secondary: rgb(236 236 234 / 0.5);
+    --tertiary: #1c1913;
     --content: #d6d4d1;
-    --border: #2c2822;
-    --code-bg: #1b1814;
-    --hljs-bg: #1b1814;
+    --border: #262218;
+    --code-bg: #16140f;
+    --hljs-bg: #16140f;
 }
 
 @media (prefers-color-scheme: dark) {
     [data-theme="auto"] {
-        --theme: #14120e;
-        --entry: #1b1814;
-        --hover: #211d18;
+        --theme: #0f0e0b;
+        --entry: #16140f;
+        --hover: #1c1913;
         --primary: #ececea;
-        --secondary: rgb(236 236 234 / 0.52);
-        --tertiary: #211d18;
+        --secondary: rgb(236 236 234 / 0.5);
+        --tertiary: #1c1913;
         --content: #d6d4d1;
-        --border: #2c2822;
-        --code-bg: #1b1814;
-        --hljs-bg: #1b1814;
+        --border: #262218;
+        --code-bg: #16140f;
+        --hljs-bg: #16140f;
     }
 }
 
@@ -139,20 +139,23 @@ h1[id], h2[id], h3[id], h4[id] {
     font-weight: 500;
 }
 
+/* "RL" monogram mark */
 .logo a {
-    font-weight: 550;
-    letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    line-height: 1;
+    font-weight: 650;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border);
+    border-radius: var(--r-xs);
+    padding: 7px 9px;
+    transition: border-color 0.15s ease;
 }
 
-/* theme-aware logo swap: logo_italic7 = dark strokes, logo_italic8 = light */
-[data-theme="dark"] .logo a img {
-    content: url("/logo_italic8.png");
-}
-
-@media (prefers-color-scheme: dark) {
-    [data-theme="auto"] .logo a img {
-        content: url("/logo_italic8.png");
-    }
+.logo a:hover {
+    border-color: var(--secondary);
 }
 
 /* ---- Homepage: intro band + contained art panel -------------------------- */
@@ -205,8 +208,8 @@ h1[id], h2[id], h3[id], h4[id] {
     overflow: hidden;
     /* static fill until (or instead of) the animation mounts */
     background:
-        radial-gradient(70% 90% at 50% 55%, oklch(34% 0.08 30 / 0.55), transparent 75%),
-        #1b1814;
+        radial-gradient(70% 90% at 50% 55%, oklch(32% 0.07 30 / 0.5), transparent 75%),
+        #16140f;
 }
 
 .art-panel canvas {
@@ -451,6 +454,89 @@ h1[id], h2[id], h3[id], h4[id] {
 /* first-entry safety: if the theme ever renders it, keep it quiet */
 .first-entry {
     background: transparent;
+}
+
+/* ---- Consistency sweep: remaining components ------------------------------ */
+
+/* prev/next links on posts */
+.paginav {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+}
+
+.paginav a {
+    color: var(--secondary);
+}
+
+.paginav a:hover .title,
+.paginav a:hover {
+    color: var(--primary);
+}
+
+/* search page */
+#searchbox input {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    color: var(--primary);
+    font-family: var(--font-sans);
+}
+
+#searchbox input:focus {
+    border-color: var(--secondary);
+}
+
+#searchResults li {
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+}
+
+#searchResults li:active,
+#searchResults li.focus {
+    background: var(--hover);
+}
+
+/* code copy button */
+.copy-code {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xs);
+    color: var(--secondary);
+    font-family: var(--font-sans);
+}
+
+.copy-code:hover {
+    color: var(--primary);
+}
+
+/* prose tables */
+.post-content table {
+    border-collapse: collapse;
+}
+
+.post-content th,
+.post-content td {
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+}
+
+/* figure captions */
+.post-content figcaption,
+.entry-cover figcaption {
+    color: var(--secondary);
+    font-size: 0.82rem;
+}
+
+/* archives page */
+.archive-year {
+    border-bottom: 1px solid var(--border);
+}
+
+.archive-count,
+.archive-meta {
+    color: var(--secondary);
 }
 
 /* ---- Cross-document View Transitions (MPA) ------------------------------- */

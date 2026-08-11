@@ -35,6 +35,6 @@ Full screen presentation -- [**web presentation**](https://liga-forum.netlify.ap
   <!-- The padding-bottom value is calculated by dividing the height by the width of the iframe and multiplying by 100 -->
   <!-- For example, if the iframe is 800px by 600px, then the padding-bottom is 600 / 800 * 100 = 75% -->
   <div class="iframe-container" style="padding-bottom: 75%; position: relative; overflow: hidden;">
-    <iframe loading="lazy" src="https://liga-forum.netlify.app" style="height:100%;width:100%;border-radius:10px;border:3px solid grey;position:absolute;top:0;left:0;" title="Iframe Example"></iframe>
+    <iframe loading="lazy" src="https://liga-forum.netlify.app" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="Iframe Example"></iframe>
   </div>
 </div>

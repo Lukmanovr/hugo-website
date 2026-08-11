@@ -58,6 +58,6 @@ Now, let's try to run this code here in the browser using Pyscript and repl. Jus
   <!-- The padding-bottom value is calculated by dividing the height by the width of the iframe and multiplying by 100 -->
   <!-- For example, if the iframe is 100% by 700px, then the padding-bottom is 700 / 100 * 100 = 700% -->
   <div class="iframe-container" style="padding-bottom: 100%; position: relative; overflow: hidden;">
-    <iframe loading="lazy" src="/pyscript-environment.html" style="height:100%;width:100%;border:1px solid #CCC;border-radius:5px;position:absolute;top:0;left:0;"></iframe>
+    <iframe loading="lazy" src="/pyscript-environment.html" style="height:100%;width:100%;position:absolute;top:0;left:0;"></iframe>
   </div>
 </div>

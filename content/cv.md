@@ -1,8 +1,8 @@
 ---
-title: "Curriculum Vitae "
-layout: "CV"
+title: "Curriculum Vitae"
 url: "/cv/"
 summary: CV
+hidemeta: true
 draft: false
 tags:
   [
@@ -13,36 +13,26 @@ author: "Rustam A. Lukmanov"
 showToc: false
 TocOpen: false
 description: "A summary of my qualifications, education and held positions."
-ShowReadingTime: true
 ShowPostNavLinks: true
 cover:
   image: images/Profile.webp
-  alt: "This is my picture"
-  caption: "Hey, that's my picture!"
-  URL: "mail@rustam-lukmanov.ru"
-  Text: "Suggest Changes" # edit text"
+  alt: "Portrait of Rustam Lukmanov"
 ---
 
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-<article class="animate__animated animate__fadeIn animate__slower	3s">
 
-#### ABOUT
+#### About
 
-> **Rustam A. Lukmanov / 08.09.1992** 
+Analytical scientist with a background spanning laser-based mass spectrometry, geophysics, and machine learning. My work combines experimental instrumentation with computational methods — in particular, graph-based and topological approaches to the unsupervised analysis of large spectroscopic datasets.
 
-I regard myself as an orderly, cooperative and curious person. I have a diverse background in analytical techniques and computational methods, that I believe are applicable and transferable for a wide range of problems. Interested in progress and building things. I've got the "Shaper" archetype from Ray Dalio's test on [PrinciplesYou](https://principlesyou.com/). Have an open-minded approach to life and positive attitude towards future.
+Born 8 September 1992. In Russian, my name reads as Рустам Лукманов.
 
-#### CONTACT INFORMATION
+#### Contact
 
-Feel free to contact me:
-**mail at rustam-lukmanov dot ru**, or use the [**contact form**](/contact/)
+[mail@rustam-lukmanov.ru](mailto:mail@rustam-lukmanov.ru) · [contact form](/contact/)
 
 ---
 
-#### EMPLOYMENT HISTORY
+#### Employment history
 - 2023–now, **Assistant Professor**, AI Institute, Innopolis University, Innopolis, Russia
 - 2021–2022, **Postdoctoral Researcher**, Space Research and Planetary Sciences, Physics Institute, University of Bern, Switzerland. Development of spectral classification tools/models for unsupervised characterization of compounds measured with space-type and high-resolution laboratory-based fs-LIMS ([review article about LIMS technology](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/abs/10.1002/mas.21669)) instruments.
 
@@ -57,7 +47,7 @@ Feel free to contact me:
 
 ---
 
-#### EDUCATION
+#### Education
 
 - 2017–2021, [**PhD in Physics**](https://www.philnat.unibe.ch/studium/studienprogramme/doktoratsprogramm_physik/index_ger.html) - Physics Institute, University of Bern, Switzerland.
 
@@ -73,7 +63,7 @@ Feel free to contact me:
 
 ---
 
-#### COURSES AND INTERNSHIPS
+#### Courses and internships
 
 - 2022, [**Web Developer**](https://practicum.yandex.ru/web/) – Yandex Practicum courses on web development (front and back-end).
 - January 2021 – July 2021, [**Innosuisse Start-Up Training**](https://www.innosuisse.ch/inno/en/home/support-for-start-ups/start-up-training.html) – Business Concept, University of Bern, Switzerland.
@@ -84,4 +74,3 @@ Feel free to contact me:
 - June 2014 – July 2014, [**Schlumberger Wire-line**](https://www.slb.com/) - Tumen Training Center, Tumen, Russia. Geophysical characterization of oil and gas wells - Boot Camp.
 
 ---
-</article>

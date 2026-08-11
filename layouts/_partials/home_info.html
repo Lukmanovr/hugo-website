@@ -1,8 +1,7 @@
 {{- /* Site customization: left-aligned editorial intro followed by a contained
-     "art panel" running the Vanta trunk animation (Cursor-cover style — art
-     lives inside a bordered card, never behind content). Libraries are
-     self-hosted (assets/js/vendor, pinned) and lazy-loaded after idle;
-     reduced-motion visitors get the panel's static gradient. */ -}}
+     "art panel" — a vanilla-canvas flow field (assets/js/art-field.js), no
+     third-party libraries. Loaded after idle; prefers-reduced-motion visitors
+     keep the panel's static CSS gradient. */ -}}
 {{- with site.Params.homeInfoParams }}
 <section class="intro">
     <h1>{{ .Title | markdownify }}</h1>
@@ -10,27 +9,15 @@
         {{ .Content | markdownify }}
     </div>
 </section>
-<div id="vanta-background" class="art-panel" aria-hidden="true"></div>
-{{- $p5 := resources.Get "js/vendor/p5.min.js" | fingerprint }}
-{{- $vanta := resources.Get "js/vendor/vanta.trunk.min.js" | fingerprint }}
-{{- $init := resources.Get "js/vanta-init.js" | resources.Minify | fingerprint }}
+<div id="art-panel" class="art-panel" aria-hidden="true"></div>
+{{- $art := resources.Get "js/art-field.js" | resources.Minify | fingerprint }}
 <script>
     (function () {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        function inject(src) {
-            return new Promise(function (resolve, reject) {
-                var s = document.createElement('script');
-                s.src = src;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-            });
-        }
         function start() {
-            inject('{{ $p5.RelPermalink }}')
-                .then(function () { return inject('{{ $vanta.RelPermalink }}'); })
-                .then(function () { return inject('{{ $init.RelPermalink }}'); })
-                .catch(function () { /* panel keeps its CSS gradient */ });
+            var s = document.createElement('script');
+            s.src = '{{ $art.RelPermalink }}';
+            document.head.appendChild(s);
         }
         if ('requestIdleCallback' in window) {
             requestIdleCallback(start, { timeout: 2000 });

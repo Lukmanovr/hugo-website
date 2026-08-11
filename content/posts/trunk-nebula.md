@@ -31,6 +31,6 @@ cover:
 New animation that I made using P5.JS - an attempt to recreate Vanta.Trunk effect:
 <div class="wrapper">
  <div class="iframe-container" style="padding-bottom: 75%; position: relative; overflow: hidden;">
- <iframe loading="lazy" src="/vanta_nebula.html" style="height:100%;width:100%;border-radius:10px;border:3px solid grey;position:absolute;top:0;left:0;" title="Iframe Example"  allow-scripts ></iframe>
+ <iframe loading="lazy" src="/vanta_nebula.html" style="height:100%;width:100%;position:absolute;top:0;left:0;" title="Iframe Example"  allow-scripts ></iframe>
  </div>
 </div>
