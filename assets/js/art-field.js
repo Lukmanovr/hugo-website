@@ -44,8 +44,23 @@
   var SCALE = 190; // noise field zoom
   var t = 0;
 
+  // palettes follow the site theme; the toggle flips html[data-theme]
+  var PALETTES = {
+    dark: { bg: '#16140f', stroke: '209, 73, 47' },
+    light: { bg: '#f2f0eb', stroke: '176, 52, 30' },
+  };
+
+  function currentPalette() {
+    var mode = document.documentElement.dataset.theme;
+    if (mode !== 'dark' && mode !== 'light') {
+      mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return PALETTES[mode];
+  }
+
   function draw() {
-    ctx.fillStyle = '#16140f';
+    var pal = currentPalette();
+    ctx.fillStyle = pal.bg;
     ctx.fillRect(0, 0, W, H);
     ctx.lineWidth = 1.3;
     ctx.lineCap = 'round';
@@ -56,7 +71,7 @@
         var depth = noise(x / SCALE + 40, y / SCALE + 40);
         var dx = Math.cos(angle) * LEN;
         var dy = Math.sin(angle) * LEN;
-        ctx.strokeStyle = 'rgba(209, 73, 47, ' + (0.3 + depth * 0.55).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + pal.stroke + ', ' + (0.3 + depth * 0.55).toFixed(3) + ')';
         ctx.beginPath();
         ctx.moveTo(x - dx, y - dy);
         ctx.lineTo(x + dx, y + dy);
@@ -92,6 +107,12 @@
   window.addEventListener('resize', function () {
     resize();
     draw();
+  });
+
+  // repaint immediately when the theme toggle flips html[data-theme]
+  new MutationObserver(draw).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
   });
 
   // animate only while the panel is on screen
