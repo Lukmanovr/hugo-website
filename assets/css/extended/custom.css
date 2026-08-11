@@ -279,7 +279,7 @@ h1[id], h2[id], h3[id], h4[id] {
     margin-top: calc(var(--gap) / 2);
     /* rows bleed slightly past the text column so the hover/tap shading
        does not hug the first character */
-    margin-inline: -14px;
+    margin-inline: -16px;
 }
 
 .post-row {
@@ -288,7 +288,7 @@ h1[id], h2[id], h3[id], h4[id] {
     grid-template-columns: 128px 1fr;
     gap: 18px;
     align-items: baseline;
-    padding: 17px 14px;
+    padding: 18px 16px;
     border-bottom: 1px solid var(--border);
     border-radius: var(--r-xs);
     transition: background 0.12s ease;
@@ -336,10 +336,17 @@ h1[id], h2[id], h3[id], h4[id] {
 }
 
 @media (max-width: 640px) {
+    /* native-list feel: the tap highlight runs edge to edge while the
+       text keeps the page gutter */
+    .post-rows {
+        margin-inline: calc(var(--gap) * -1);
+    }
+
     .post-row {
         grid-template-columns: 1fr;
-        row-gap: 4px;
-        padding: 14px 2px;
+        row-gap: 6px;
+        padding: 16px var(--gap);
+        border-radius: 0;
     }
 }
 
