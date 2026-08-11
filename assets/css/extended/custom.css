@@ -261,6 +261,11 @@ h1[id], h2[id], h3[id], h4[id] {
     border-top: 1px solid var(--border);
 }
 
+/* the list should not stack its own hairline on top of the footer's */
+.post-row:last-child {
+    border-bottom: none;
+}
+
 .post-row:hover {
     background: var(--hover);
 }
