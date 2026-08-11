@@ -61,7 +61,7 @@ params:
   tocopen: false
 
   assets:
-    theme_color: "#0f0e0b"
+    theme_color: "#16140f"
     favicon: "/circle4.webp"
     favicon16x16: "/circle4.webp"
     favicon32x32: "/circle4.webp"
