@@ -10,7 +10,7 @@ languages:
       title: Rustam Lukmanov
 
 pagination:
-  pagerSize: 10
+  pagerSize: 100 # effectively unpaginated - the lists are short
 
 enableRobotsTXT: true
 buildDrafts: false
